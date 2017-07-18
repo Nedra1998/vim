@@ -12,7 +12,7 @@ Table Of Contents
 .. contents::
 
 *******
-INSTALL
+Install
 *******
 
 To install simply copy and paste:
@@ -24,7 +24,7 @@ To install simply copy and paste:
 This will clone the git repository to your :code:`.vim` folder.
 
 *******
-PLUGINS
+Plugins
 *******
 
 This is a compleate list of plugins for this vim configuration.
