@@ -34,7 +34,7 @@ This is a compleate list of plugins for this vim configuration.
 +========================+=====================================================+
 | CtrlP                  | https://github.com/ctrlpvim/ctrlp.vim               |
 +------------------------+-----------------------------------------------------+
-| GV                     | https://github.com/junegunno/gv.vim                 |
+| GV                     | https://github.com/junegunn/gv.vim                  |
 +------------------------+-----------------------------------------------------+
 | IncSearch Fuzzy        | https://github.com/haya14busa/incsearch-fuzzy.vim   |
 +------------------------+-----------------------------------------------------+
