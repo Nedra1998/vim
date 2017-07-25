@@ -38,6 +38,12 @@ map zg/ <Plug>(incsearch-fuzzy-stay)
 " Line graphical movement
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 
+" NERD Commenter
+nnoremap <leader>\ :call NERDComment(0,"toggle")<CR>
+
+" New line insert
+nmap <C-o> o<Esc>
+
 " Split navigations
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
@@ -142,9 +148,15 @@ let g:cpp_class_scope_hightlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 
+" Ctrlp
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
 " Indentline Settings
 let g:indentLine_setColor = 0
 let g:indentLine_char = '|'
+
+" NERD Commenter
+let g:NERDSpaceDelims = 2
 
 " Nerdtree Highlighting
 

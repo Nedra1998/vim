@@ -40,6 +40,8 @@ This is a compleate list of plugins for this vim configuration.
 +------------------------+-----------------------------------------------------+
 | IncSearch              | https://github.com/haya14busa/incsearch.vim         |
 +------------------------+-----------------------------------------------------+
+| NerdCommenter          | https://github.com/scrooloose/nerdcommenter         |
++------------------------+-----------------------------------------------------+
 | NerdTree               | https://github.com/scrooloose/nerdtree              |
 +------------------------+-----------------------------------------------------+
 | NerdTree Git Plugin    | https://github.com/Xuyuanp/nerdtree-git-plugin      |
@@ -52,6 +54,8 @@ This is a compleate list of plugins for this vim configuration.
 +------------------------+-----------------------------------------------------+
 | Syntastic              | https://github.com/vim-syntastic/syntastic          |
 +------------------------+-----------------------------------------------------+
+| TableMode              | https://github.com/dhruvagar/vim-table-mode         |
++------------------------+-----------------------------------------------------+
 | TagBar                 | https://github.com/majutsushi/tagbar                |
 +------------------------+-----------------------------------------------------+
 | TaskList               | https://github.com/vim-scripts/TaskList.vim         |
@@ -63,8 +67,6 @@ This is a compleate list of plugins for this vim configuration.
 | Airline Themes         | https://github.com/vim-airline/vim-airline-themes   |
 +------------------------+-----------------------------------------------------+
 | Solarized              | https://github.com/altercation/vim-colors-solarized |
-+------------------------+-----------------------------------------------------+
-| Commentary             | https://github.com/tpope/vim-commentary             |
 +------------------------+-----------------------------------------------------+
 | C++ Enhanced Highlight | https://github.com/octol/vim-cpp-enhanced-highlight |
 +------------------------+-----------------------------------------------------+
@@ -95,6 +97,15 @@ Code Folding
 +=======+===========+
 | Space | za (Fold) |
 +-------+-----------+
+
+NERD Commenter
+==============
+
++------------+---------------------+
+| Key        | Action              |
++============+=====================+
+| <leader>\\ | Toggle line comment |
++------------+---------------------+
 
 Fugitive
 ========
