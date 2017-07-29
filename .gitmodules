@@ -34,9 +34,6 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule "bundle/TaskList.vim"]
-	path = bundle/TaskList.vim
-	url = https://github.com/vim-scripts/TaskList.vim
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips
