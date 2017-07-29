@@ -40,6 +40,7 @@ noremap <silent> <Leader>w :call ToggleWrap()<CR>
 
 " NERD Commenter
 nnoremap <leader>\ :call NERDComment(0,"toggle")<CR>
+vnoremap <leader>\ :call NERDComment(0,"toggle")<CR>
 
 " New line insert
 nmap <C-o> o<Esc>
@@ -85,6 +86,9 @@ set foldlevel=99
 
 " Compleation
 set completeopt-=preview
+
+" Conceal
+set conceallevel=2
 
 " Encoding
 set encoding=utf-8
