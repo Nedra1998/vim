@@ -1,0 +1,40 @@
+# Vim Todo #
+
+## Readme ##
+
+- [ ] (6) Alphabetize Mappings
+- [ ] (3) Add vim-markdown
+- [ ] (2) Add vim-task
+- [ ] (6) Alphabetize plugins table
+
+## Sub Modules ##
+
+- [ ] (2) Add lh-cpp plugin
+- [ ] (6) Add instant rst plugin
+- [ ] (6) Add instant markdown plugin
+
+## Scripts ##
+
+- [ ] (1) vim-todo
+  - [ ] (3) Syntax
+    - [x] (3) Sections #(06:22 31-07-2017)
+    - [x] (1) Check Boxes #(06:22 31-07-2017)
+    - [x] (4) Priority Colloring #(06:22 31-07-2017)
+    - [x] (6) Concealing priority markers #(06:22 31-07-2017)
+    - [x] (6) Concealing compleated dates #(06:22 31-07-2017)
+    - [x] (5) Grey out compleated tasks #(06:22 31-07-2017)
+  - [ ] (4) Mappings 
+    - [ ] (1) New item
+      - [ ] (6) Above 
+      - [x] (1) Below #(06:22 31-07-2017)
+    - [x] (8) Indentation #(06:22 31-07-2017)
+    - [x] (3) Move priority #(06:23 31-07-2017)
+    - [x] (1) Toggle compleation #(06:23 31-07-2017)
+    - [ ] (3) Set Priority 
+  - [ ] (2) Options
+    - [ ] (1) Disable markdown saveing
+    - [ ] (6) Set default priority
+  - [ ] (5) Folding
+    - [ ] (4) Folding by indentation
+    - [ ] (4) Folding by section
+    - [ ] (4) Folding sub tasks
