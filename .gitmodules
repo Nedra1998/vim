@@ -79,3 +79,12 @@
 [submodule "bundle/vim-markdown"]
 	path = bundle/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown
+[submodule "bundle/vim-task"]
+	path = bundle/vim-task
+	url = https://github.com/Nedra1998/vim-task
+[submodule "bundle/auto-pairs"]
+	path = bundle/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "bundle/--force"]
+	path = bundle/vim-autoformat
+	url = https://github.com/Chiel92/vim-autoformat

@@ -31,3 +31,10 @@
     - [x] (3) Move priority #(06:23 31-07-2017)
     - [x] (1) Toggle compleation #(06:23 31-07-2017)
     - [ ] (3) Set Priority 
+  - [ ] (2) Options
+    - [x] (1) Disable markdown saveing #(12:56 31-07-2017)
+    - [x] (6) Set default priority #(13:03 31-07-2017)
+  - [ ] (5) Folding
+    - [ ] (4) Folding by indentation
+    - [ ] (4) Folding by section
+    - [ ] (4) Folding sub tasks

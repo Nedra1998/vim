@@ -76,9 +76,10 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "=========================>>> VIM SETTINGS <<<========================="
 
 " Auto format
-au BufWrite *.cpp :call Format()
-au BufWrite *.hpp :call Format()
-au BufWrite *.py :call Format()
+au BufWrite *.(c,h,cpp,hpp,py) :Autoformat
+" au BufWrite *.cpp :call Format()
+" au BufWrite *.hpp :call Format()
+" au BufWrite *.py :call Format()
 
 " Code folding
 set foldmethod=syntax
@@ -105,11 +106,11 @@ endif
 
 " Linelength
 au BufNewFile,BufRead *.md
-  \ set textwidth=79
+      \ set textwidth=79
 au BufNewFile,BufRead *.rst
-  \ set textwidth=79
+      \ set textwidth=79
 au BufNewFile,BufRead *.tex
-  \ set textwidth=79
+      \ set textwidth=79
 
 " Misc
 set laststatus=2
@@ -130,11 +131,12 @@ set statusline+=%*
 " Tab
 set tabstop=8 softtabstop=0 shiftwidth=2 expandtab smarttab
 au BufNewFile,BufRead *.py
-  \ set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+      \ set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 au BufNewFile,BufRead *.tex
-  \ set textwidth=79
+      \ set textwidth=79
 
 " Theme
+let python_highlight_all=1
 syntax enable
 set background=dark
 colorscheme solarized
@@ -197,31 +199,31 @@ let g:table_mode_header_fillchar='='
 
 " Tagbar
 let g:tagbar_type_rst = {
-    \ 'ctagstype': 'rst',
-    \ 'ctagsbin' : '~/.vim/rst2ctags/rst2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
+      \ 'ctagstype': 'rst',
+      \ 'ctagsbin' : '~/.vim/rst2ctags/rst2ctags.py',
+      \ 'ctagsargs' : '-f - --sort=yes',
+      \ 'kinds' : [
+      \ 's:sections',
+      \ 'i:images'
+      \ ],
+      \ 'sro' : '|',
+      \ 'kind2scope' : {
+      \ 's' : 'section',
+      \ },
+      \ 'sort': 0,
+      \ }
 
 let g:tagbar_type_plaintext = {
-    \ 'ctagstype' : 'plaintext',
-    \ 'kinds'     : [
-        \ 's:sections',
-        \ 'g:graphics:0:0',
-        \ 'l:labels',
-        \ 'r:refs:1:0',
-        \ 'p:pagerefs:1:0'
-    \ ],
-    \ 'sort'    : 0,
-\ }
+      \ 'ctagstype' : 'plaintext',
+      \ 'kinds'     : [
+      \ 's:sections',
+      \ 'g:graphics:0:0',
+      \ 'l:labels',
+      \ 'r:refs:1:0',
+      \ 'p:pagerefs:1:0'
+      \ ],
+      \ 'sort'    : 0,
+      \ }
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -301,8 +303,8 @@ endfunction
 
 " Nerdtree highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
 " Table Mode
