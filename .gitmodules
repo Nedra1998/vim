@@ -97,3 +97,9 @@
 [submodule "bundle/goyo.vim"]
 	path = bundle/goyo.vim
 	url = https://github.com/junegunn/goyo.vim
+[submodule "bundle/vim-markdown-toc"]
+	path = bundle/vim-markdown-toc
+	url = https://github.com/mzlogin/vim-markdown-toc
+[submodule "markdown2ctags"]
+	path = markdown2ctags
+	url = https://github.com/jszakmeister/markdown2ctags

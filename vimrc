@@ -38,6 +38,9 @@ map zg/ <Plug>(incsearch-fuzzy-stay)
 " Line graphical movement
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 
+" Markdown Toc
+nnoremap <leader>toc :GenTocGFM<CR>
+
 " NERD Commenter
 nnoremap <leader>\ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>\ :call NERDComment(0,"toggle")<CR>
@@ -135,14 +138,7 @@ au BufNewFile,BufRead *.tex
 " Theme
 let python_highlight_all=1
 syntax enable
-let g:solarized_termcolors = 16 | 256
-let g:solarized_termtrans = 1 | 0
-let g:solarized_degrade = 0 | 1
-let g:solarized_bold = 1 | 0
-let g:solarized_underline = 1 | 0
-let g:solarized_italic = 1 | 0
-let g:solarized_contrast = "normal"
-let g:solarized_visibility = "normal"
+set background=dark
 colorscheme solarized
 autocmd BufEnter *.{tex,md,rst,txt} set background=light
 autocmd BufEnter *.{tex,md,rst,txt} colorscheme PaperColor
@@ -172,6 +168,11 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " Indentline Settings
 let g:indentLine_setColor = 0
 let g:indentLine_char = '|'
+
+" Markdown
+let g:vim_markdown_math = 1
+
+" Markdown TOC
 
 " NERD Commenter
 let g:NERDSpaceDelims = 2
@@ -212,6 +213,21 @@ let g:syntastic_warning_symbol = "\u26A0"
 let g:table_mode_corner='|'
 
 " Tagbar
+let g:tagbar_type_markdown = {
+      \ 'ctagstype': 'markdown',
+      \ 'ctagsbin' : '~/.vim/markdown2ctags/markdown2ctags.py',
+      \ 'ctagsargs' : '-f - --sort=yes',
+      \ 'kinds' : [
+      \ 's:sections',
+      \ 'i:images'
+      \ ],
+      \ 'sro' : '|',
+      \ 'kind2scope' : {
+      \ 's' : 'section',
+      \ },
+      \ 'sort': 0,
+      \ }
+
 let g:tagbar_type_rst = {
       \ 'ctagstype': 'rst',
       \ 'ctagsbin' : '~/.vim/rst2ctags/rst2ctags.py',
