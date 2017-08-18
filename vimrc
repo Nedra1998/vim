@@ -14,7 +14,7 @@ map <F5> :call Format()<CR>
 imap <F5><c-o> :call Format()<CR>
 map <F6> :SyntasticToggleMode<CR>
 map <F7> :call Make()<CR>
-map <F12> :w !wc -w<CR>
+map <F12> :Goyo<CR>
 
 " Code folding
 nnoremap <space> za
@@ -76,10 +76,8 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "=========================>>> VIM SETTINGS <<<========================="
 
 " Auto format
-au BufWrite *.(c,h,cpp,hpp,py) :Autoformat
-" au BufWrite *.cpp :call Format()
-" au BufWrite *.hpp :call Format()
-" au BufWrite *.py :call Format()
+au BufWrite *.{cpp,hpp,c,h,json,js,py,css,html,html5} :Autoformat
+let g:formatter_yapf_style='google'
 
 " Code folding
 set foldmethod=syntax
@@ -124,9 +122,8 @@ set nu
 set showmatch
 
 " Statusline
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 " Tab
 set tabstop=8 softtabstop=0 shiftwidth=2 expandtab smarttab
@@ -138,21 +135,36 @@ au BufNewFile,BufRead *.tex
 " Theme
 let python_highlight_all=1
 syntax enable
-set background=dark
+let g:solarized_termcolors = 16 | 256
+let g:solarized_termtrans = 1 | 0
+let g:solarized_degrade = 0 | 1
+let g:solarized_bold = 1 | 0
+let g:solarized_underline = 1 | 0
+let g:solarized_italic = 1 | 0
+let g:solarized_contrast = "normal"
+let g:solarized_visibility = "normal"
 colorscheme solarized
-
+autocmd BufEnter *.{tex,md,rst,txt} set background=light
+autocmd BufEnter *.{tex,md,rst,txt} colorscheme PaperColor
 
 "=========================>>> EXTENSIONS <<<========================="
 
 " Airline Settings
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
+autocmd BufEnter *.{tex,md,rst,txt} let g:airline_theme = 'papercolor'
+autocmd BufEnter *.{tex,md,rst,txt} AirlineRefresh
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#syntastic#stl_format_err = 'Err: #%e'
+let g:airline#extensions#syntastic#stl_format_warn = 'Warn: #%w'
 
 " C++ Highlighting settings
 let g:cpp_class_scope_hightlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+
+" Colorizer
+let g:colorizer_auto_filetype='lua,css,html'
 
 " Ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -173,29 +185,31 @@ let python_highlight_all = 1
 let g:SimpylFold_docstring_preview=1
 
 " Solarized
-let g:solarized_termcolors = 16 | 256
-let g:solarized_termtrans = 1 | 0
-let g:solarized_degrade = 0 | 1
-let g:solarized_bold = 1 | 0
-let g:solarized_underline = 1 | 0
-let g:solarized_italic = 1 | 0
-let g:solarized_contrast = "normal"
-let g:solarized_visibility = "normal"
+" let g:solarized_termcolors = 256 | 16
+" let g:solarized_termtrans = 1 | 0
+" let g:solarized_degrade = 0 | 1
+" let g:solarized_bold = 1 | 0
+" let g:solarized_underline = 1 | 0
+" let g:solarized_italic = 1 | 0
+" let g:solarized_contrast = "normal"
+" let g:solarized_visibility = "normal"
 
 " Supertab
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " Syntastic
 let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = '-std=c++11'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "\u2717"
+let g:syntastic_warning_symbol = "\u26A0"
 
 " Table Mode
-let g:table_mode_corner_corner='+'
-let g:table_mode_header_fillchar='='
+let g:table_mode_corner='|'
 
 " Tagbar
 let g:tagbar_type_rst = {
@@ -243,6 +257,7 @@ let g:ycm_complete_in_comments = 0
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_collect_identifiers_from_tag_files = 1
 let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp' : 1, 'python': 1 }
+let g:ycm_show_diagnostics_ui = 0
 
 
 "=========================>>> FUNCTIONS <<<========================="
@@ -264,6 +279,23 @@ endfunction
 function Yapf()
   :0,$!yapf
 endfunction
+
+" Goyo
+function! s:goyo_enter()
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+endfunction
+
+function! s:goyo_leave()
+  set showmode
+  set showcmd
+  set scrolloff=5
+  AirlineRefresh
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Graphical Line Movement
 function ToggleWrap()
