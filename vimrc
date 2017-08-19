@@ -79,7 +79,7 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "=========================>>> VIM SETTINGS <<<========================="
 
 " Auto format
-au BufWrite *.{cpp,hpp,c,h,json,js,py,css,html,html5} :Autoformat
+au BufWrite *.{cpp,hpp,c,h,json,js,py,css,html,html} :Autoformat
 let g:formatter_yapf_style='google'
 
 " Code folding
@@ -199,9 +199,16 @@ let g:SimpylFold_docstring_preview=1
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " Syntastic
+let g:syntastic_tex_checkers=['chktex', 'proselint']
+let g:syntastic_markdown_checkers=['mdl', 'proselint']
+let g:syntastic_cpp_checkers=['gcc', 'clang_check', 'clang_tidy']
+
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
+let g:syntastic_cpp_clang_check_post_args = ''
+let g:syntastic_cpp_clang_tidy_post_args = ''
 let g:syntastic_python_python_exec = '/usr/bin/python3'
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
