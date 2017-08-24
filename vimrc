@@ -3,6 +3,16 @@ runtime! debian.vim
 execute pathogen#infect()
 call pathogen#helptags()
 
+" Alt key fix
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
+
 
 "==========================>>> KEY MAPS <<<========================="
 
@@ -18,6 +28,10 @@ map <F12> :Goyo<CR>
 
 " Code folding
 nnoremap <space> za
+
+" Clipboard Pasting
+imap <C-v> <C-o>"+p
+noremap <C-v> "+p"<CR>
 
 " Fugitive
 noremap <silent> <Leader>gl :GV --graph --abbrev-commit --decorate --all<CR>
@@ -40,6 +54,12 @@ noremap <silent> <Leader>w :call ToggleWrap()<CR>
 
 " Markdown Toc
 nnoremap <leader>toc :GenTocGFM<CR>
+
+" Movement
+noremap <A-l> 5l
+noremap <A-h> 5h
+noremap <A-k> 5k
+noremap <A-j> 5j
 
 " NERD Commenter
 nnoremap <leader>\ :call NERDComment(0,"toggle")<CR>
@@ -137,6 +157,8 @@ au BufNewFile,BufRead *.tex
 
 " Theme
 let python_highlight_all=1
+let g:enable_bold_font = 1
+let g:enable_italic_font = 1
 syntax enable
 set background=dark
 colorscheme solarized
@@ -162,8 +184,15 @@ let g:cpp_class_decl_highlight = 1
 " Colorizer
 let g:colorizer_auto_filetype='lua,css,html'
 
+" Commenter
+
+
 " Ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 " Indentline Settings
 let g:indentLine_setColor = 0
@@ -176,8 +205,6 @@ let g:vim_markdown_math = 1
 
 " NERD Commenter
 let g:NERDSpaceDelims = 2
-
-" Nerdtree Highlighting
 
 " Python Highlighting settings
 let python_highlight_all = 1
@@ -195,13 +222,25 @@ let g:SimpylFold_docstring_preview=1
 " let g:solarized_contrast = "normal"
 " let g:solarized_visibility = "normal"
 
+" Startify
+let g:startify_custom_header = [
+      \ '                                 __         __     ',
+      \ '           __                  /''_ `\     /''__`\   ',
+      \ '   __  __ /\_\    ___ ___     /\ \L\ \   /\ \/\ \  ',
+      \ '  /\ \/\ \\/\ \ /'' __` __`\   \/_> _ <_  \ \ \ \ \ ',
+      \ '  \ \ \_/ |\ \ \/\ \/\ \/\ \    /\ \L\ \__\ \ \_\ \',
+      \ '   \ \___/  \ \_\ \_\ \_\ \_\   \ \____/\_\\ \____/',
+      \ '    \/__/    \/_/\/_/\/_/\/_/    \/___/\/_/ \/___/ ',
+      \ '                                                   ',
+      \ ]
+
 " Supertab
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " Syntastic
 let g:syntastic_tex_checkers=['chktex', 'proselint']
 let g:syntastic_markdown_checkers=['mdl', 'proselint']
-let g:syntastic_cpp_checkers=['gcc', 'clang_check', 'clang_tidy']
+let g:syntastic_cpp_checkers=['gcc']
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
@@ -263,6 +302,7 @@ let g:tagbar_type_plaintext = {
       \ }
 
 " UltiSnips
+let g:snips_author = "Arden"
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
@@ -279,7 +319,7 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:ycm_complete_in_comments = 0
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_collect_identifiers_from_tag_files = 1
-let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp' : 1, 'python': 1 }
+let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp' : 1, 'python': 1}
 let g:ycm_show_diagnostics_ui = 0
 
 
