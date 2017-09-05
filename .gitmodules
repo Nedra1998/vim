@@ -109,3 +109,9 @@
 [submodule "bundle/vim-closetag"]
 	path = bundle/vim-closetag
 	url = https://github.com/alvan/vim-closetag
+[submodule "bundle/vim-glsl"]
+	path = bundle/vim-glsl
+	url = https://github.com/tikhomirov/vim-glsl
+[submodule "bundle/vim-fish"]
+	path = bundle/vim-fish
+	url = https://github.com/dag/vim-fish

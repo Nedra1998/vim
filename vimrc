@@ -241,6 +241,7 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " Syntastic
 let g:syntastic_tex_checkers=['chktex', 'proselint']
 let g:syntastic_markdown_checkers=['mdl', 'proselint']
+let g:syntastic_rst_checkers=['sphinx', 'rstcheck', 'proselint']
 let g:syntastic_cpp_checkers=['gcc']
 
 let g:syntastic_cpp_compiler = 'clang++'
