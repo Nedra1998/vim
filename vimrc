@@ -161,7 +161,8 @@ let g:enable_bold_font = 1
 let g:enable_italic_font = 1
 syntax enable
 set background=dark
-colorscheme solarized
+let base16colorspace=256
+colorscheme base16-flat
 autocmd BufEnter *.{tex,md,rst,txt} set background=light
 autocmd BufEnter *.{tex,md,rst,txt} colorscheme PaperColor
 
@@ -169,7 +170,7 @@ autocmd BufEnter *.{tex,md,rst,txt} colorscheme PaperColor
 
 " Airline Settings
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'base16_flat'
 autocmd BufEnter *.{tex,md,rst,txt} let g:airline_theme = 'papercolor'
 autocmd BufEnter *.{tex,md,rst,txt} AirlineRefresh
 let g:airline#extensions#tabline#enabled = 1
