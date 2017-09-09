@@ -3,14 +3,6 @@ runtime! debian.vim
 execute pathogen#infect()
 call pathogen#helptags()
 
-" Alt key fix
-let c='a'
-while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
-
 set timeout ttimeoutlen=50
 
 
@@ -156,13 +148,18 @@ au BufNewFile,BufRead *.tex
       \ set textwidth=79
 
 " Theme
+" if has("termguicolors")
+set termguicolors
+" endif
 let python_highlight_all=1
 let g:enable_bold_font = 1
 let g:enable_italic_font = 1
 syntax enable
 set background=dark
-let base16colorspace=256
-colorscheme base16-flat
+" let base16colorspace=256
+" colorscheme base16-flat
+
+colorscheme solarized
 autocmd BufEnter *.{tex,md,rst,txt} set background=light
 autocmd BufEnter *.{tex,md,rst,txt} colorscheme PaperColor
 
@@ -170,7 +167,7 @@ autocmd BufEnter *.{tex,md,rst,txt} colorscheme PaperColor
 
 " Airline Settings
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'base16_flat'
+let g:airline_theme = 'solarized'
 autocmd BufEnter *.{tex,md,rst,txt} let g:airline_theme = 'papercolor'
 autocmd BufEnter *.{tex,md,rst,txt} AirlineRefresh
 let g:airline#extensions#tabline#enabled = 1
