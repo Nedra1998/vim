@@ -194,8 +194,9 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
 " Indentline Settings
-let g:indentLine_setColor = 0
-let g:indentLine_char = '|'
+let g:indent_guides_auto_color = 0
+autocmd VimEnter,ColorScheme * :hi IndentGuidesOdd ctermbg=0
+autocmd VimEnter,ColorScheme * :hi IndentGuidesEven ctermbg=8
 
 " Markdown
 let g:vim_markdown_math = 1
@@ -240,12 +241,17 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:syntastic_tex_checkers=['chktex', 'proselint']
 let g:syntastic_markdown_checkers=['mdl', 'proselint']
 let g:syntastic_rst_checkers=['sphinx', 'rstcheck', 'proselint']
-let g:syntastic_cpp_checkers=['gcc']
+let g:syntastic_cpp_checkers=['gcc', 'make']
+let g:syntastic_c_checkers=['gcc', 'make']
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
 let g:syntastic_cpp_clang_check_post_args = ''
 let g:syntastic_cpp_clang_tidy_post_args = ''
+let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
+let g:syntastic_c_clang_check_post_args = ''
+let g:syntastic_c_clang_tidy_post_args = ''
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 let g:syntastic_always_populate_loc_list = 1
@@ -319,7 +325,7 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:ycm_complete_in_comments = 0
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_collect_identifiers_from_tag_files = 1
-let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp' : 1, 'python': 1}
+let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp' : 1, 'python': 1, 'c' : 1 , 'h' : 1 }
 let g:ycm_show_diagnostics_ui = 0
 
 
@@ -328,6 +334,8 @@ let g:ycm_show_diagnostics_ui = 0
 " Autoformat
 function Format()
   if &ft == "cpp"
+    call Clang()
+  elseif &ft == "c"
     call Clang()
   elseif &ft == "python"
     call Yapf()
