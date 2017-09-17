@@ -160,8 +160,8 @@ let base16colorspace=256
 colorscheme base16-flat
 
 " colorscheme solarized8_dark
-autocmd BufEnter *.{tex,md,rst,txt} set background=light
-autocmd BufEnter *.{tex,md,rst,txt} colorscheme PaperColor
+autocmd BufEnter *.{tex,md,rst} set background=light
+autocmd BufEnter *.{tex,md,rst} colorscheme PaperColor
 
 "=========================>>> EXTENSIONS <<<========================="
 
@@ -169,8 +169,8 @@ autocmd BufEnter *.{tex,md,rst,txt} colorscheme PaperColor
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'base16_flat'
 " let g:airline_theme = 'solarized'
-autocmd BufEnter *.{tex,md,rst,txt} let g:airline_theme = 'papercolor'
-autocmd BufEnter *.{tex,md,rst,txt} AirlineRefresh
+autocmd BufEnter *.{tex,md,rst} let g:airline_theme = 'papercolor'
+autocmd BufEnter *.{tex,md,rst} AirlineRefresh
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#syntastic#stl_format_err = 'Err: #%e'
 let g:airline#extensions#syntastic#stl_format_warn = 'Warn: #%w'
