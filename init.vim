@@ -117,6 +117,9 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+" Latex file type
+let g:tex_flavor = "latex"
+
 " Linelength
 au BufNewFile,BufRead *.md
       \ set textwidth=79
@@ -212,28 +215,6 @@ let python_highlight_all = 1
 " SimpylFold
 let g:SimpylFold_docstring_preview=1
 
-" Solarized
-" let g:solarized_termcolors = 256 | 16
-" let g:solarized_termtrans = 1 | 0
-" let g:solarized_degrade = 0 | 1
-" let g:solarized_bold = 1 | 0
-" let g:solarized_underline = 1 | 0
-" let g:solarized_italic = 1 | 0
-" let g:solarized_contrast = "normal"
-" let g:solarized_visibility = "normal"
-
-" Startify
-let g:startify_custom_header = [
-      \ '                                 __         __     ',
-      \ '           __                  /''_ `\     /''__`\   ',
-      \ '   __  __ /\_\    ___ ___     /\ \L\ \   /\ \/\ \  ',
-      \ '  /\ \/\ \\/\ \ /'' __` __`\   \/_> _ <_  \ \ \ \ \ ',
-      \ '  \ \ \_/ |\ \ \/\ \/\ \/\ \    /\ \L\ \__\ \ \_\ \',
-      \ '   \ \___/  \ \_\ \_\ \_\ \_\   \ \____/\_\\ \____/',
-      \ '    \/__/    \/_/\/_/\/_/\/_/    \/___/\/_/ \/___/ ',
-      \ '                                                   ',
-      \ ]
-
 " Supertab
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
@@ -245,13 +226,15 @@ let g:syntastic_cpp_checkers=['gcc', 'make']
 let g:syntastic_c_checkers=['gcc', 'make']
 
 let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
+let g:syntastic_cpp_compiler_options = '-std=c++17 -Wall -Wextra -Wpedantic'
 let g:syntastic_cpp_clang_check_post_args = ''
 let g:syntastic_cpp_clang_tidy_post_args = ''
-let g:syntastic_c_compiler = 'gcc'
-let g:syntastic_c_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
+
+let g:syntastic_c_compiler = 'clang'
+let g:syntastic_c_compiler_options = '-Wall -Wextra -Wpedantic'
 let g:syntastic_c_clang_check_post_args = ''
 let g:syntastic_c_clang_tidy_post_args = ''
+
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 let g:syntastic_always_populate_loc_list = 1
@@ -295,8 +278,8 @@ let g:tagbar_type_rst = {
       \ 'sort': 0,
       \ }
 
-let g:tagbar_type_plaintext = {
-      \ 'ctagstype' : 'plaintext',
+let g:tagbar_type_latex = {
+      \ 'ctagstype' : 'latex',
       \ 'kinds'     : [
       \ 's:sections',
       \ 'g:graphics:0:0',
@@ -325,7 +308,7 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:ycm_complete_in_comments = 0
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_collect_identifiers_from_tag_files = 1
-let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp' : 1, 'python': 1, 'c' : 1 , 'h' : 1 }
+let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp' : 1, 'python': 1, 'c' : 1 , 'h' : 1}
 let g:ycm_show_diagnostics_ui = 0
 
 
