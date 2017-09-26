@@ -118,3 +118,12 @@
 [submodule "bundle/vim-indent-guides"]
 	path = bundle/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides
+[submodule "bundle/vim-multiple-cursors"]
+	path = bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors
+[submodule "bundle/vim-easymotion"]
+	path = bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
+[submodule "bundle/incsearch-easymotion.vim"]
+	path = bundle/incsearch-easymotion.vim
+	url = https://github.com/haya14busa/incsearch-easymotion.vim

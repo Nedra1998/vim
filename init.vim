@@ -41,6 +41,8 @@ map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
 
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+
 " Line graphical movement
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
 
@@ -189,6 +191,22 @@ let g:colorizer_auto_filetype='lua,css,html'
 " Ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
+" EasyMovement
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
 " Emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
@@ -201,8 +219,6 @@ autocmd VimEnter,ColorScheme * :hi IndentGuidesEven ctermbg=8
 " Markdown
 let g:vim_markdown_math = 1
 
-" Markdown TOC
-
 " NERD Commenter
 let g:NERDSpaceDelims = 2
 
@@ -212,28 +228,6 @@ let python_highlight_all = 1
 " SimpylFold
 let g:SimpylFold_docstring_preview=1
 
-" Solarized
-" let g:solarized_termcolors = 256 | 16
-" let g:solarized_termtrans = 1 | 0
-" let g:solarized_degrade = 0 | 1
-" let g:solarized_bold = 1 | 0
-" let g:solarized_underline = 1 | 0
-" let g:solarized_italic = 1 | 0
-" let g:solarized_contrast = "normal"
-" let g:solarized_visibility = "normal"
-
-" Startify
-let g:startify_custom_header = [
-      \ '                                 __         __     ',
-      \ '           __                  /''_ `\     /''__`\   ',
-      \ '   __  __ /\_\    ___ ___     /\ \L\ \   /\ \/\ \  ',
-      \ '  /\ \/\ \\/\ \ /'' __` __`\   \/_> _ <_  \ \ \ \ \ ',
-      \ '  \ \ \_/ |\ \ \/\ \/\ \/\ \    /\ \L\ \__\ \ \_\ \',
-      \ '   \ \___/  \ \_\ \_\ \_\ \_\   \ \____/\_\\ \____/',
-      \ '    \/__/    \/_/\/_/\/_/\/_/    \/___/\/_/ \/___/ ',
-      \ '                                                   ',
-      \ ]
-
 " Supertab
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
@@ -241,17 +235,20 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:syntastic_tex_checkers=['chktex', 'proselint']
 let g:syntastic_markdown_checkers=['mdl', 'proselint']
 let g:syntastic_rst_checkers=['sphinx', 'rstcheck', 'proselint']
-let g:syntastic_cpp_checkers=['gcc', 'make']
+let g:syntastic_cpp_checkers=['gcc', 'cppcheck', 'cpplint']
 let g:syntastic_c_checkers=['gcc', 'make']
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
 let g:syntastic_cpp_clang_check_post_args = ''
 let g:syntastic_cpp_clang_tidy_post_args = ''
+let g:syntastic_cpp_cpplint_exec = 'cpplint'
+
 let g:syntastic_c_compiler = 'gcc'
 let g:syntastic_c_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
 let g:syntastic_c_clang_check_post_args = ''
 let g:syntastic_c_clang_tidy_post_args = ''
+
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 let g:syntastic_always_populate_loc_list = 1
@@ -396,6 +393,17 @@ function ToggleWrap()
     inoremap <buffer> <silent> <Home> <C-o>g<Home>
     inoremap <buffer> <silent> <End>  <C-o>g<End>
   endif
+endfunction
+
+" Incsearch
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
 endfunction
 
 " Make
