@@ -41,7 +41,7 @@ map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
 
-noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+" map m/ incsearch#go(<SID>config_easyfuzzymotion())
 
 " Line graphical movement
 noremap <silent> <Leader>w :call ToggleWrap()<CR>
@@ -174,8 +174,14 @@ let g:airline_theme = 'base16_flat'
 autocmd BufEnter *.{tex,md,rst} let g:airline_theme = 'papercolor'
 autocmd BufEnter *.{tex,md,rst} AirlineRefresh
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#syntastic#stl_format_err = 'Err: #%e'
-let g:airline#extensions#syntastic#stl_format_warn = 'Warn: #%w'
+" let g:airline#extensions#syntastic#stl_format_err = 'Err: #%e'
+" let g:airline#extensions#syntastic#stl_format_warn = 'Warn: #%w'
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#stl_format_err = "Err: #%e"
+
+" Ale
+let g:ale_sign_error = 'E>'
+let g:ale_sign_warning = 'W>'
 
 " C++ Highlighting settings
 let g:cpp_class_scope_hightlight = 1
@@ -232,31 +238,31 @@ let g:SimpylFold_docstring_preview=1
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " Syntastic
-let g:syntastic_tex_checkers=['chktex', 'proselint']
-let g:syntastic_markdown_checkers=['mdl', 'proselint']
-let g:syntastic_rst_checkers=['sphinx', 'rstcheck', 'proselint']
-let g:syntastic_cpp_checkers=['gcc', 'cppcheck', 'cpplint']
-let g:syntastic_c_checkers=['gcc', 'make']
+" let g:syntastic_tex_checkers=['chktex', 'proselint']
+" let g:syntastic_markdown_checkers=['mdl', 'proselint']
+" let g:syntastic_rst_checkers=['sphinx', 'rstcheck', 'proselint']
+" let g:syntastic_cpp_checkers=['gcc', 'cppcheck', 'cpplint']
+" let g:syntastic_c_checkers=['gcc', 'make']
 
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
-let g:syntastic_cpp_clang_check_post_args = ''
-let g:syntastic_cpp_clang_tidy_post_args = ''
-let g:syntastic_cpp_cpplint_exec = 'cpplint'
+" let g:syntastic_cpp_compiler = 'clang++'
+" let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
+" let g:syntastic_cpp_clang_check_post_args = ''
+" let g:syntastic_cpp_clang_tidy_post_args = ''
+" let g:syntastic_cpp_cpplint_exec = 'cpplint'
 
-let g:syntastic_c_compiler = 'gcc'
-let g:syntastic_c_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
-let g:syntastic_c_clang_check_post_args = ''
-let g:syntastic_c_clang_tidy_post_args = ''
+" let g:syntastic_c_compiler = 'gcc'
+" let g:syntastic_c_compiler_options = '-std=c++11 -Wall -Wextra -Wpedantic'
+" let g:syntastic_c_clang_check_post_args = ''
+" let g:syntastic_c_clang_tidy_post_args = ''
 
-let g:syntastic_python_python_exec = '/usr/bin/python3'
+" let g:syntastic_python_python_exec = '/usr/bin/python3'
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "\u2717"
-let g:syntastic_warning_symbol = "\u26A0"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_error_symbol = "\u2717"
+" let g:syntastic_warning_symbol = "\u26A0"
 
 " Table Mode
 let g:table_mode_corner='|'
