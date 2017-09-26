@@ -2,6 +2,7 @@
 " Arden Rasmussen
 " This is the neovim init.vim file that is used by Arden Rasmussen.
 
+runtime! debian.vim
 
 " Plugins Installation
 " =============================================================================
@@ -61,8 +62,81 @@ call plug#end()
 
 " Key Mappings
 " =============================================================================
+
+" Ale
+" =====================================
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Code Folding
+" =====================================
+nnoremap <space> za
+
+" Copy/Paste
+" =====================================
 imap <C-v> <C-o>"+p
 noremap <C-v> "+p"<CR>
+
+" Fugitive
+" =====================================
+noremap <silent> <Leader>gst :Gstatus<CR>
+noremap <silent> <leader>ga :Gwrite<CR>
+noremap <silent> <leader>gc :Gcommit<CR>
+noremap <silent> <leader>gp :Gpush<CR>
+
+" Incsearch
+" =====================================
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+" Movement
+" =====================================
+noremap <A-l> 5l
+noremap <A-h> 5h
+noremap <A-k> 5k
+noremap <A-j> 5j
+
+" NERD Commenter
+" =====================================
+nnoremap <leader>\ :call NERDComment(0,"toggle")<CR>
+vnoremap <leader>\ :call NERDComment(0,"toggle")<CR>
+
+" Split navigations
+" =====================================
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-h> <C-W><C-H>
+
+" Tab Navigation
+" =====================================
+nnoremap <C-I> :tabnext<CR>
+inoremap <C-I> <Esc>:tabnext<CR>i
+nnoremap t :tabnew<CR>
+
+" Window Resizing
+" =====================================
+nnoremap <silent> <leader>l :vertical resize +5<CR>
+nnoremap <silent> <leader>h :vertical resize -5<CR>
+nnoremap <silent> <leader>j :resize +5<CR>
+nnoremap <silent> <leader>k :resize -5<CR>
+
+" Window Swap
+" =====================================
+nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 
 " Vim/Nvim Settings
 " =============================================================================
@@ -82,6 +156,7 @@ if has("termguicolors")
   set termguicolors
 endif
 syntax enable
+set hlsearch
 set background=dark
 let python_highlight_all=1
 let g:enable_bold_font = 1
@@ -177,6 +252,10 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
+" Incsearch
+" =====================================
+let g:incsearch#auto_nohlsearch = 1
+
 " Markdown
 " =====================================
 let g:vim_markdown_math = 1
@@ -222,7 +301,17 @@ let g:ycm_show_diagnostics_ui = 0
 " Functions
 " =============================================================================
 
-
+" Incsearch
+" =====================================
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
 
 
 
