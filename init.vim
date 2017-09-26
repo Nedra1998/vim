@@ -18,6 +18,10 @@ map <F6> :SyntasticToggleMode<CR>
 map <F7> :call Make()<CR>
 map <F12> :Goyo<CR>
 
+" Ale
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 " Code folding
 nnoremap <space> za
 
@@ -182,6 +186,9 @@ let g:airline#extensions#ale#stl_format_err = "Err: #%e"
 " Ale
 let g:ale_sign_error = 'E>'
 let g:ale_sign_warning = 'W>'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " C++ Highlighting settings
 let g:cpp_class_scope_hightlight = 1
