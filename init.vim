@@ -20,11 +20,13 @@ Plug 'lervag/vimtex'
 " Color Schemes
 Plug 'rakr/vim-one'
 Plug 'chriskempson/base16-vim'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline-themes'
 
 " Enviorment
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'mkitt/tabline.vim'
 
@@ -164,13 +166,13 @@ if has("termguicolors")
 endif
 syntax enable
 set hlsearch
-set background=dark
 let python_highlight_all=1
 let g:one_allow_italics = 1
 let base16colorspae=256
-colorscheme one
+set background=dark
+colorscheme base16-flat
 autocmd BufEnter *.{tex,md,rst} set background=light
-" autocmd BufEnter *.{tex,md,rst} colorscheme PaperColor
+autocmd BufEnter *.{tex,md,rst} colorscheme PaperColor
 
 " Completion
 " =====================================
@@ -225,11 +227,12 @@ au BufNewFile,BufRead *.py
 
 " Airline
 " =====================================
-let g:airline_theme = 'one'
+let g:airline_theme = 'base16_flat'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#ale#stl_format_err = "Err: #%e"
+autocmd BufEnter *.{tex,md,rst} let g:airline_theme = 'papercolor'
 
 " Ale
 " =====================================
