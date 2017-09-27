@@ -18,8 +18,8 @@ Plug 'petRUShka/vim-sage'
 Plug 'lervag/vimtex'
 
 " Color Schemes
+Plug 'rakr/vim-one'
 Plug 'chriskempson/base16-vim'
-Plug 'iCyMind/NeoSolarized'
 Plug 'vim-airline/vim-airline-themes'
 
 " Enviorment
@@ -39,10 +39,8 @@ Plug 'honza/vim-snippets'
 " Search
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
 
 " Motion
-Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
 Plug 'wesQ3/vim-windowswap'
 
@@ -102,7 +100,6 @@ map g/ <Plug>(incsearch-stay)
 map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
-noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
 map *  <Plug>(incsearch-nohl-*)
@@ -169,10 +166,9 @@ syntax enable
 set hlsearch
 set background=dark
 let python_highlight_all=1
-let g:enable_bold_font = 1
-let g:enable_italic_font = 1
-let base16colorspace=256
-colorscheme NeoSolarized
+let g:one_allow_italics = 1
+let base16colorspae=256
+colorscheme one
 autocmd BufEnter *.{tex,md,rst} set background=light
 " autocmd BufEnter *.{tex,md,rst} colorscheme PaperColor
 
@@ -229,7 +225,7 @@ au BufNewFile,BufRead *.py
 
 " Airline
 " =====================================
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'one'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
@@ -256,16 +252,6 @@ let g:cpp_class_decl_highlight = 1
 " Ctrlp
 " =====================================
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-" EasyMovement
-" =====================================
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-nmap s <Plug>(easymotion-overwin-f2)
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " Incsearch
 " =====================================
