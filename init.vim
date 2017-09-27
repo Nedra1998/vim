@@ -10,7 +10,7 @@ call plug#begin('~/.config/nvim/Plugged')
 
 " Languages
 Plug 'hdima/python-syntax'
-Plug 'octol/vim-cpp-enhanced-highlight' 
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'dag/vim-fish'
 Plug 'tikhomirov/vim-glsl'
 Plug 'plasticboy/vim-markdown'
@@ -19,6 +19,7 @@ Plug 'lervag/vimtex'
 
 " Color Schemes
 Plug 'chriskempson/base16-vim'
+Plug 'iCyMind/NeoSolarized'
 Plug 'vim-airline/vim-airline-themes'
 
 " Enviorment
@@ -26,7 +27,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'mkitt/tabline.vim'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Checkers
 Plug 'w0rp/ale'
@@ -62,6 +62,16 @@ call plug#end()
 
 " Key Mappings
 " =============================================================================
+
+" F Keys
+" =====================================
+
+map <F2> :set spell! spelllang=en_us<CR>
+map <F3> :NERDTreeToggle<CR>
+map <F4> :TagbarToggle<CR>
+map <F5> :Autoformat<CR>
+imap <F5><c-o> :Autoformat<CR>
+map <F12> :Goyo<CR>
 
 " Ale
 " =====================================
@@ -162,9 +172,9 @@ let python_highlight_all=1
 let g:enable_bold_font = 1
 let g:enable_italic_font = 1
 let base16colorspace=256
-colorscheme base16-flat
+colorscheme NeoSolarized
 autocmd BufEnter *.{tex,md,rst} set background=light
-autocmd BufEnter *.{tex,md,rst} colorscheme PaperColor
+" autocmd BufEnter *.{tex,md,rst} colorscheme PaperColor
 
 " Completion
 " =====================================
@@ -185,7 +195,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Line Length
 " =====================================
 au BufNewFile,BufRead *.{md,rst,tex}
-			\ set textwidth=79
+      \ set textwidth=79
 
 " Misc
 " =====================================
@@ -197,6 +207,11 @@ set timeout ttimeoutlen=50
 " Numbering
 " =====================================
 set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " Show Matching
 " =====================================
@@ -214,7 +229,7 @@ au BufNewFile,BufRead *.py
 
 " Airline
 " =====================================
-let g:airline_theme = 'base16_flat'
+let g:airline_theme = 'solarized'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
