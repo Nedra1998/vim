@@ -18,10 +18,11 @@ Plug 'petRUShka/vim-sage'
 Plug 'lervag/vimtex'
 
 " Color Schemes
-Plug 'rakr/vim-one'
+Plug '~/Programming/vim/vim-flatui'
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'lifepillar/vim-solarized8'
 
 " Enviorment
 Plug 'kien/ctrlp.vim'
@@ -29,6 +30,10 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'mkitt/tabline.vim'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'mhinz/vim-signify'
+Plug 'junegunn/goyo.vim'
+Plug 'majutsushi/tagbar'
 
 " Checkers
 Plug 'w0rp/ale'
@@ -37,6 +42,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'mzlogin/vim-markdown-toc'
 
 " Search
 Plug 'haya14busa/incsearch.vim'
@@ -134,6 +140,10 @@ nnoremap <C-I> :tabnext<CR>
 inoremap <C-I> <Esc>:tabnext<CR>i
 nnoremap t :tabnew<CR>
 
+" TOC Markdown Generation
+" =====================================
+nnoremap <leader>toc :GenTocGFM<CR>
+
 " Window Resizing
 " =====================================
 nnoremap <silent> <leader>l :vertical resize +5<CR>
@@ -167,12 +177,13 @@ endif
 syntax enable
 set hlsearch
 let python_highlight_all=1
-let g:one_allow_italics = 1
-let base16colorspae=256
 set background=dark
-colorscheme base16-flat
-autocmd BufEnter *.{tex,md,rst} set background=light
-autocmd BufEnter *.{tex,md,rst} colorscheme PaperColor
+colorscheme flatui
+" colorscheme solarized8_dark
+au BufNewFile,BufRead *.{md,rst,tex}
+      \ set background=light
+" au BufNewFile,BufRead *.{md,rst,tex}
+      " \ colorscheme solarized8_light
 
 " Completion
 " =====================================
@@ -192,6 +203,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " Line Length
 " =====================================
+set colorcolumn=80
 au BufNewFile,BufRead *.{md,rst,tex}
       \ set textwidth=79
 
@@ -205,11 +217,6 @@ set timeout ttimeoutlen=50
 " Numbering
 " =====================================
 set number relativenumber
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
 
 " Show Matching
 " =====================================
@@ -232,7 +239,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#ale#stl_format_err = "Err: #%e"
-autocmd BufEnter *.{tex,md,rst} let g:airline_theme = 'papercolor'
 
 " Ale
 " =====================================
@@ -276,6 +282,49 @@ let python_highlight_all = 1
 " =====================================
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
+" TagBar
+" =====================================
+let g:tagbar_type_asciidoc = {
+    \ 'ctagstype' : 'asciidoc',
+    \ 'kinds' : [
+        \ 'h:table of contents',
+        \ 'a:anchors:1',
+        \ 't:titles:1',
+        \ 'n:includes:1',
+        \ 'i:images:1',
+        \ 'I:inline images:1'
+    \ ],
+    \ 'sort' : 0
+\ }
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '~/.config/nvim/Extensions/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+let g:tagbar_type_rst = {
+    \ 'ctagstype': 'rst',
+    \ 'ctagsbin' : '~/.config/nvim/Extensions/rst2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
 " UltiSnips
 " =====================================
 let g:snips_author = "Arden"
@@ -317,7 +366,10 @@ function! s:config_easyfuzzymotion(...) abort
   \ }), get(a:, 1, {}))
 endfunction
 
-
-
-
-
+nmap <leader>sp :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
