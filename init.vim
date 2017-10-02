@@ -162,7 +162,7 @@ nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 
 " Auto Format
 " =====================================
-au BufWrite *.{cpp,hpp,c,h,json,js,py,css,html,md} :Autoformat
+au BufWrite *.{cpp,hpp,c,h,json,js,css,html,md} :Autoformat
 
 " Code Folding
 " =====================================
@@ -188,6 +188,10 @@ au BufNewFile,BufRead *.{md,rst,tex}
 " Completion
 " =====================================
 set completeopt-=preview
+
+" Conceal
+" =====================================
+set conceallevel=2
 
 " Encoding
 " =====================================
@@ -221,6 +225,10 @@ set number relativenumber
 " Show Matching
 " =====================================
 set showmatch
+
+" Status Line
+" =====================================
+set laststatus=2
 
 " Tab
 " =====================================
@@ -353,6 +361,20 @@ let g:ycm_show_diagnostics_ui = 0
 
 " Functions
 " =============================================================================
+
+" Goyo
+" =====================================
+
+function! s:goyo_enter()
+  ALEToggle
+endfunction
+
+function! s:goyo_leave()
+  ALEToggle
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Incsearch
 " =====================================
