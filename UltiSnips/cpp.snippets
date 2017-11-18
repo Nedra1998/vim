@@ -1,5 +1,5 @@
 snippet TODO "TODO"
-// TODO (`!v strftime('%d-%m-%y')`, ${5:`!v g:snips_author`}): $0
+// TODO(`!v strftime('%Y-%m-%d')`, ${5:`!v g:snips_author`}): $0
 endsnippet
 
 snippet namespace "Namespace"
@@ -12,4 +12,15 @@ snippet tf "Test_F"
 TEST_F($1, $2){
   $0
 }
+endsnippet
+
+snippet copyright "Copyright"
+// Copyright `!v strftime('%Y')` ${5: `!v g:snips_author`}
+endsnippet
+
+snippet guard "Header Guard"
+#ifndef $1
+#define $1
+${0:${VISUAL}}
+#endif  // $1
 endsnippet

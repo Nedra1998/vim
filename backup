@@ -19,8 +19,6 @@ Plug 'lervag/vimtex'
 Plug 'elzr/vim-json'
 Plug 'vim-scripts/DoxyGen-Syntax'
 Plug 'chrisbra/csv.vim'
-Plug 'tbastos/vim-lua'
-Plug 'PotatoesMaster/i3-vim-syntax'
 
 " Color Schemes
 Plug 'chriskempson/base16-vim'
@@ -475,6 +473,21 @@ let g:ycm_show_diagnostics_ui = 0
 
 " Functions
 " =============================================================================
+
+" Goyo
+" =====================================
+
+function! s:goyo_enter()
+  ALEToggle
+endfunction
+
+function! s:goyo_leave()
+  ALEToggle
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 " Incsearch
 " =====================================
 function! s:config_easyfuzzymotion(...) abort
