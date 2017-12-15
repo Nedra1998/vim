@@ -21,16 +21,20 @@ Plug 'vim-scripts/DoxyGen-Syntax'
 Plug 'chrisbra/csv.vim'
 Plug 'tbastos/vim-lua'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'keith/swift.vim'
 
 " Color Schemes
-Plug 'chriskempson/base16-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'Nedra1998/vim-airline-themes'
-Plug 'lifepillar/vim-solarized8'
-Plug 'dracula/vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'rakr/vim-one'
-Plug 'chrisbra/Colorizer'
+" Plug 'chriskempson/base16-vim'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'Nedra1998/vim-airline-themes'
+" Plug 'lifepillar/vim-solarized8'
+" Plug 'dracula/vim'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'rakr/vim-one'
+" Plug 'chrisbra/Colorizer'
 
 " Enviorment
 Plug 'kien/ctrlp.vim'
@@ -41,9 +45,11 @@ Plug 'mkitt/tabline.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/TaskList.vim'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'digitalrounin/vim-yaml-folds'
 
 " Checkers
 Plug 'w0rp/ale'
@@ -54,6 +60,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'heavenshell/vim-pydocstring'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
@@ -72,7 +79,6 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-surround'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'jiangmiao/auto-pairs'
 
 " Utilities
@@ -85,7 +91,7 @@ Plug 'ervandew/supertab'
 " Plug '~/Programming/vim/vim-material'
 Plug '~/Programming/isotope/vim'
 
-Plug 'gerw/vim-HiLinkTrace'
+" Plug 'gerw/vim-HiLinkTrace'
 
 call plug#end()
 
@@ -94,6 +100,7 @@ call plug#end()
 
 " F Keys
 " =====================================
+nmap <silent> <C-y> <Plug>(pydocstring)
 
 map <F2> :set spell! spelllang=en_us<CR>
 map <F3> :NERDTreeToggle<CR>
@@ -206,13 +213,15 @@ nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 
 " Auto Format
 " =====================================
-au BufWrite *.{cpp,hpp,c,h,json,js,css,py,md} :Autoformat
+" au BufWrite *.{cpp,hpp,c,h,json,js,css,py,md} :Autoformat
+" let g:formatdef_lua_formatter = '"luaformatter -a"'
+" let g:formatters_lua = ['lua_formatter']
 
 " Code Folding
 " =====================================
 set foldmethod=syntax
 set foldlevel=99
-au BufRead,BufNew *.{lua,vim,css}
+au BufRead,BufNew *.{lua,vim,css,xdefault}
       \ set foldmethod=marker
 au BufRead,BufNew *.{html}
       \ set foldmethod=indent
@@ -271,6 +280,7 @@ let g:tex_flavor = "latex"
 " Line Length
 " =====================================
 set colorcolumn=80
+au BufNewFile,BufRead *.py set colorcolumn=100
 au BufNewFile,BufRead *.{md,rst,tex}
       \ set textwidth=79
 
@@ -338,6 +348,13 @@ let g:ale_sign_style_warning = 's>'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_python_pylint_args = '--py3k'
+let g:ale_linters = {
+      \ 'asm': [] 
+      \ }
+" let g:ale_linters = {
+      " \ 'python': ['flake8', 'mypy', 'pylint3', 'autopep8', 'yapf']
+      " \ }
 " let g:ale_lint_on_text_changed = 'normal'
 
 " Auto Format
@@ -457,6 +474,10 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " VimText
 " =====================================
 let g:vimtex_fold_enabled = 1
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 " Window Swap
 " =====================================
@@ -494,3 +515,6 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!

@@ -1,5 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/arden/Programming/isotope/isotope.github.io/src/content'
 let g:netrw_dirhist_2='/home/arden/Programming/isotope/isotope.github.io/src/content/bash'
 let g:netrw_dirhist_3='/home/arden/.config/awesome/themes/isotope'
+let g:netrw_dirhist_4='/home/arden/Programming/cpp/tabula/tabula'
+let g:netrw_dirhist_5='/home/arden/Programming/isotope/isotope.github.io/build'
+let g:netrw_dirhist_6='/home/arden/Programming/cpp/tabula/docs/source'
+let g:netrw_dirhist_7='/home/arden/Programming/speed_test/src'
