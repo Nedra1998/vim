@@ -249,8 +249,8 @@ endif
 
 set background=dark
 colorscheme isotope
-au BufNewFile,BufRead *.{md,rst,tex}
-      \ set background=light
+" au BufNewFile,BufRead *.{md,rst,tex}
+      " \ set background=light
 
 " Completion
 " =====================================
@@ -330,8 +330,8 @@ au BufNewFile,BufRead *.rst
 " Airline
 " =====================================
 let g:airline_isotope_bg='dark'
-au BufNewFile,BufRead *.{md,rst,tex}
-      \ let g:airline_isotope_bg='light'
+" au BufNewFile,BufRead *.{md,rst,tex}
+      " \ let g:airline_isotope_bg='light'
 let g:airline_theme = 'isotope'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
