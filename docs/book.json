@@ -1,0 +1,12 @@
+{
+  "plugins": ["theme-api"],
+  "pluginsConfig": {
+    "theme-api": {
+      "languages": [{
+        "lang": "vs",
+        "name": "VimScript",
+        "default": true
+      }]
+    }
+  }
+}
