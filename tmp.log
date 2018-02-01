@@ -1,0 +1,194 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.043  000.043: --- NVIM STARTING ---
+000.843  000.800: locale set
+002.661  001.818: inits 1
+002.697  000.036: window checked
+003.557  000.860: parsing arguments
+003.569  000.011: expanding arguments
+003.787  000.218: inits 2
+004.808  001.021: init highlight
+014.043  008.563  008.563: sourcing /home/arden/.config/nvim/autoload/plug.vim
+043.998  000.043  000.043: sourcing /home/arden/.config/nvim/Plugged/vim-twig/filetype.vim
+056.819  000.082  000.082: sourcing /home/arden/.config/nvim/Plugged/ansible-vim/ftdetect/ansible.vim
+056.913  000.049  000.049: sourcing /home/arden/.config/nvim/Plugged/apiblueprint.vim/ftdetect/apiblueprint.vim
+057.006  000.046  000.046: sourcing /home/arden/.config/nvim/Plugged/vim-arduino-syntax/ftdetect/arduino.vim
+057.088  000.038  000.038: sourcing /home/arden/.config/nvim/Plugged/vim-asciidoc/ftdetect/asciidoc.vim
+057.154  000.020  000.020: sourcing /home/arden/.config/nvim/Plugged/vim-blade/ftdetect/blade.vim
+057.223  000.020  000.020: sourcing /home/arden/.config/nvim/Plugged/vim-caddyfile/ftdetect/caddyfile.vim
+057.279  000.021  000.021: sourcing /home/arden/.config/nvim/Plugged/carp-vim/ftdetect/carp.vim
+057.359  000.047  000.047: sourcing /home/arden/.config/nvim/Plugged/vim-cjsx/ftdetect/cjsx.vim
+057.479  000.084  000.084: sourcing /home/arden/.config/nvim/Plugged/vim-clojure-static/ftdetect/clojure.vim
+057.633  000.103  000.103: sourcing /home/arden/.config/nvim/Plugged/vim-coffee-script/ftdetect/coffee.vim
+057.690  000.041  000.041: sourcing /home/arden/.config/nvim/Plugged/vim-coffee-script/ftdetect/vim-literate-coffeescript.vim
+057.750  000.024  000.024: sourcing /home/arden/.config/nvim/Plugged/cql-vim/ftdetect/cql.vim
+057.849  000.063  000.063: sourcing /home/arden/.config/nvim/Plugged/cryptol.vim/ftdetect/cryptol.vim
+057.933  000.049  000.049: sourcing /home/arden/.config/nvim/Plugged/vim-crystal/ftdetect/crystal.vim
+058.000  000.031  000.031: sourcing /home/arden/.config/nvim/Plugged/vim-cucumber/ftdetect/cucumber.vim
+058.055  000.019  000.019: sourcing /home/arden/.config/nvim/Plugged/dart-vim-plugin/ftdetect/dart.vim
+058.163  000.069  000.069: sourcing /home/arden/.config/nvim/Plugged/vim-elixir/ftdetect/elixir.vim
+058.219  000.020  000.020: sourcing /home/arden/.config/nvim/Plugged/elm-vim/ftdetect/elm.vim
+058.291  000.037  000.037: sourcing /home/arden/.config/nvim/Plugged/vim-ember-script/ftdetect/ember-script.vim
+058.363  000.037  000.037: sourcing /home/arden/.config/nvim/Plugged/vim-emblem/ftdetect/emblem.vim
+058.509  000.111  000.111: sourcing /home/arden/.config/nvim/Plugged/vim-erlang-runtime/ftdetect/erlang.vim
+058.643  000.099  000.099: sourcing /home/arden/.config/nvim/Plugged/vim-fish/ftdetect/fish.vim
+058.722  000.044  000.044: sourcing /home/arden/.config/nvim/Plugged/vim-fsharp/ftdetect/fsharp.vim
+058.968  000.212  000.212: sourcing /home/arden/.config/nvim/Plugged/vim-git/ftdetect/git.vim
+059.105  000.103  000.103: sourcing /home/arden/.config/nvim/Plugged/vim-glsl/ftdetect/glsl.vim
+059.160  000.019  000.019: sourcing /home/arden/.config/nvim/Plugged/gmpl.vim/ftdetect/gmpl.vim
+059.288  000.087  000.087: sourcing /home/arden/.config/nvim/Plugged/vim-go/ftdetect/gofiletype.vim
+059.370  000.038  000.038: sourcing /home/arden/.config/nvim/Plugged/vim-haml/ftdetect/haml.vim
+059.514  000.103  000.103: sourcing /home/arden/.config/nvim/Plugged/vim-mustache-handlebars/ftdetect/mustache.vim
+059.604  000.053  000.053: sourcing /home/arden/.config/nvim/Plugged/haskell-vim/ftdetect/haskell.vim
+059.658  000.019  000.019: sourcing /home/arden/.config/nvim/Plugged/vim-haxe/ftdetect/haxe.vim
+059.750  000.051  000.051: sourcing /home/arden/.config/nvim/Plugged/i3-vim-syntax/ftdetect/i3.vim
+059.823  000.038  000.038: sourcing /home/arden/.config/nvim/Plugged/vim-jasmine/ftdetect/jasmine.vim
+059.928  000.071  000.071: sourcing /home/arden/.config/nvim/Plugged/vim-javascript/ftdetect/javascript.vim
+060.037  000.071  000.071: sourcing /home/arden/.config/nvim/Plugged/Jenkinsfile-vim-syntax/ftdetect/Jenkinsfile.vim
+060.117  000.021  000.021: sourcing /home/arden/.config/nvim/Plugged/json5.vim/ftdetect/json5.vim
+060.234  000.083  000.083: sourcing /home/arden/.config/nvim/Plugged/vim-json/ftdetect/json.vim
+060.355  000.081  000.081: sourcing /home/arden/.config/nvim/Plugged/vim-jst/ftdetect/jst.vim
+060.466  000.077  000.077: sourcing /home/arden/.config/nvim/Plugged/vim-jsx/ftdetect/javascript.vim
+060.547  000.045  000.045: sourcing /home/arden/.config/nvim/Plugged/julia-vim/ftdetect/julia.vim
+060.619  000.037  000.037: sourcing /home/arden/.config/nvim/Plugged/kotlin-vim/ftdetect/kotlin.vim
+060.684  000.021  000.021: sourcing /home/arden/.config/nvim/Plugged/vim-less/ftdetect/less.vim
+060.936  000.219  000.219: sourcing /home/arden/.config/nvim/Plugged/vim-liquid/ftdetect/liquid.vim
+061.009  000.037  000.037: sourcing /home/arden/.config/nvim/Plugged/slimv/ftdetect/clojure.vim
+061.125  000.057  000.057: sourcing /home/arden/.config/nvim/Plugged/vim-ls/ftdetect/ls.vim
+061.215  000.048  000.048: sourcing /home/arden/.config/nvim/Plugged/vim-bundle-mako/ftdetect/mako.vim
+061.309  000.057  000.057: sourcing /home/arden/.config/nvim/Plugged/vim-markdown/ftdetect/markdown.vim
+061.448  000.094  000.094: sourcing /home/arden/.config/nvim/Plugged/nginx.vim/ftdetect/nginx.vim
+061.524  000.040  000.040: sourcing /home/arden/.config/nvim/Plugged/nim.vim/ftdetect/nim.vim
+061.585  000.026  000.026: sourcing /home/arden/.config/nvim/Plugged/vim-nix/ftdetect/nix.vim
+061.662  000.021  000.021: sourcing /home/arden/.config/nvim/Plugged/vim-opencl/ftdetect/opencl.vim
+061.721  000.018  000.018: sourcing /home/arden/.config/nvim/Plugged/vim-perl/ftdetect/mason-in-html.vim
+061.802  000.066  000.066: sourcing /home/arden/.config/nvim/Plugged/vim-perl/ftdetect/perl11.vim
+061.864  000.024  000.024: sourcing /home/arden/.config/nvim/Plugged/pgsql.vim/ftdetect/pgsql.vim
+062.050  000.112  000.112: sourcing /home/arden/.config/nvim/Plugged/plantuml-syntax/ftdetect/plantuml.vim
+062.170  000.073  000.073: sourcing /home/arden/.config/nvim/Plugged/vim-ps1/ftdetect/ps1.vim
+062.209  000.024  000.024: sourcing /home/arden/.config/nvim/Plugged/vim-ps1/ftdetect/ps1xml.vim
+062.264  000.039  000.039: sourcing /home/arden/.config/nvim/Plugged/vim-ps1/ftdetect/xml.vim
+062.323  000.023  000.023: sourcing /home/arden/.config/nvim/Plugged/vim-protobuf/ftdetect/proto.vim
+062.395  000.039  000.039: sourcing /home/arden/.config/nvim/Plugged/vim-pug/ftdetect/pug.vim
+062.471  000.040  000.040: sourcing /home/arden/.config/nvim/Plugged/vim-puppet/ftdetect/puppet.vim
+062.531  000.026  000.026: sourcing /home/arden/.config/nvim/Plugged/purescript-vim/ftdetect/purescript.vim
+062.596  000.022  000.022: sourcing /home/arden/.config/nvim/Plugged/vim-qml/ftdetect/qml.vim
+062.704  000.075  000.075: sourcing /home/arden/.config/nvim/Plugged/nvim-r/ftdetect/r.vim
+062.776  000.038  000.038: sourcing /home/arden/.config/nvim/Plugged/vim-racket/ftdetect/racket.vim
+062.839  000.023  000.023: sourcing /home/arden/.config/nvim/Plugged/vim-raml/ftdetect/raml.vim
+063.198  000.307  000.307: sourcing /home/arden/.config/nvim/Plugged/vim-ruby/ftdetect/ruby.vim
+063.601  000.387  000.387: sourcing /home/arden/.config/nvim/Plugged/vim-ruby/ftdetect/ruby_extra.vim
+063.662  000.023  000.023: sourcing /home/arden/.config/nvim/Plugged/rust.vim/ftdetect/rust.vim
+063.726  000.025  000.025: sourcing /home/arden/.config/nvim/Plugged/vim-sbt/ftdetect/sbt.vim
+063.839  000.078  000.078: sourcing /home/arden/.config/nvim/Plugged/vim-scala/ftdetect/scala.vim
+063.901  000.027  000.027: sourcing /home/arden/.config/nvim/Plugged/scss-syntax.vim/ftdetect/scss.vim
+063.959  000.023  000.023: sourcing /home/arden/.config/nvim/Plugged/vim-slim/ftdetect/slim.vim
+064.017  000.022  000.022: sourcing /home/arden/.config/nvim/Plugged/vim-slime-syntax/ftdetect/slime.vim
+064.075  000.023  000.023: sourcing /home/arden/.config/nvim/Plugged/vim-solidity/ftdetect/solidity.vim
+064.160  000.046  000.046: sourcing /home/arden/.config/nvim/Plugged/vim-stylus/ftdetect/stylus.vim
+064.240  000.046  000.046: sourcing /home/arden/.config/nvim/Plugged/swift.vim/ftdetect/swift.vim
+064.333  000.046  000.046: sourcing /home/arden/.config/nvim/Plugged/vim-sxhkdrc/ftdetect/sxhkdrc.vim
+064.517  000.148  000.148: sourcing /home/arden/.config/nvim/Plugged/systemd-vim-syntax/ftdetect/systemd.vim
+064.619  000.059  000.059: sourcing /home/arden/.config/nvim/Plugged/vim-terraform/ftdetect/terraform.vim
+064.680  000.026  000.026: sourcing /home/arden/.config/nvim/Plugged/textile.vim/ftdetect/textile.vim
+064.738  000.024  000.024: sourcing /home/arden/.config/nvim/Plugged/thrift.vim/ftdetect/thrift.vim
+064.797  000.025  000.025: sourcing /home/arden/.config/nvim/Plugged/tmux.vim/ftdetect/tmux.vim
+064.910  000.072  000.072: sourcing /home/arden/.config/nvim/Plugged/vim-toml/ftdetect/toml.vim
+064.957  000.014  000.014: sourcing /home/arden/.config/nvim/Plugged/vim-twig/ftdetect/twig.vim
+065.094  000.101  000.101: sourcing /home/arden/.config/nvim/Plugged/typescript-vim/ftdetect/typescript.vim
+065.207  000.075  000.075: sourcing /home/arden/.config/nvim/Plugged/vala.vim/ftdetect/vala.vim
+065.276  000.023  000.023: sourcing /home/arden/.config/nvim/Plugged/vcl-vim-plugin/ftdetect/vcl.vim
+065.343  000.026  000.026: sourcing /home/arden/.config/nvim/Plugged/vifm.vim/ftdetect/vifm-rename.vim
+065.399  000.041  000.041: sourcing /home/arden/.config/nvim/Plugged/vifm.vim/ftdetect/vifm.vim
+065.465  000.023  000.023: sourcing /home/arden/.config/nvim/Plugged/vim-velocity/ftdetect/velocity.vim
+065.524  000.024  000.024: sourcing /home/arden/.config/nvim/Plugged/vim-vue/ftdetect/vue.vim
+065.837  000.044  000.044: sourcing /home/arden/.config/nvim/Plugged/rspec.vim/after/ftdetect/rspec.vim
+065.965  021.854  016.454: sourcing /usr/share/nvim/runtime/filetype.vim
+066.642  000.034  000.034: sourcing /usr/share/nvim/runtime/ftplugin.vim
+067.402  000.050  000.050: sourcing /usr/share/nvim/runtime/indent.vim
+069.301  000.380  000.380: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+069.720  001.608  001.228: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+069.774  002.213  000.606: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+070.067  000.169  000.169: sourcing /usr/share/nvim/runtime/syntax/nosyntax.vim
+071.796  000.191  000.191: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+072.227  001.351  001.160: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+072.283  002.433  000.914: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+073.834  000.221  000.221: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+076.419  000.224  000.224: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+077.684  000.215  000.215: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+085.961  011.133  010.695: sourcing /home/arden/.config/nvim/Plugged/vim/colors/isotope.vim
+085.976  080.712  034.168: sourcing /home/arden/.config/nvim/init.vim
+085.980  000.460: sourcing vimrc file(s)
+086.190  000.083  000.083: sourcing /home/arden/.config/nvim/Plugged/apiblueprint.vim/plugin/apiary.vim
+086.292  000.084  000.084: sourcing /home/arden/.config/nvim/Plugged/apiblueprint.vim/plugin/apiblueprint.vim
+086.538  000.052  000.052: sourcing /home/arden/.config/nvim/Plugged/vim-crystal/plugin/crystal.vim
+086.668  000.067  000.067: sourcing /home/arden/.config/nvim/Plugged/dart-vim-plugin/plugin/dart.vim
+086.783  000.054  000.054: sourcing /home/arden/.config/nvim/Plugged/elm-vim/plugin/elm.vim
+087.211  000.299  000.299: sourcing /home/arden/.config/nvim/Plugged/vim-go/plugin/go.vim
+087.871  000.008  000.008: sourcing /home/arden/.config/nvim/Plugged/vim-twig/filetype.vim
+087.973  000.007  000.007: sourcing /usr/share/nvim/runtime/filetype.vim
+088.568  000.006  000.006: sourcing /usr/share/nvim/runtime/ftplugin.vim
+089.117  000.007  000.007: sourcing /home/arden/.config/nvim/Plugged/vim-twig/filetype.vim
+089.205  000.007  000.007: sourcing /usr/share/nvim/runtime/filetype.vim
+089.856  000.006  000.006: sourcing /usr/share/nvim/runtime/indent.vim
+090.995  003.554  003.512: sourcing /home/arden/.config/nvim/Plugged/slimv/plugin/paredit.vim
+091.728  000.087  000.087: sourcing /home/arden/.config/nvim/Plugged/python-mode/autoload/pymode.vim
+092.228  000.012  000.012: sourcing /home/arden/.config/nvim/Plugged/vim-twig/filetype.vim
+092.354  000.008  000.008: sourcing /usr/share/nvim/runtime/filetype.vim
+092.939  000.007  000.007: sourcing /usr/share/nvim/runtime/ftplugin.vim
+094.045  000.008  000.008: sourcing /home/arden/.config/nvim/Plugged/vim-twig/filetype.vim
+094.134  000.007  000.007: sourcing /usr/share/nvim/runtime/filetype.vim
+094.691  000.007  000.007: sourcing /usr/share/nvim/runtime/ftplugin.vim
+096.011  000.084  000.084: sourcing /usr/share/nvim/runtime/autoload/provider/pythonx.vim
+107.691  000.214  000.214: sourcing /usr/share/nvim/runtime/autoload/remote/host.vim
+107.802  012.426  012.128: sourcing /usr/share/nvim/runtime/autoload/provider/python.vim
+107.866  016.640  004.079: sourcing /home/arden/.config/nvim/Plugged/python-mode/plugin/pymode.vim
+108.745  000.378  000.378: sourcing /home/arden/.config/nvim/Plugged/riv.vim/autoload/riv.vim
+110.770  000.630  000.630: sourcing /home/arden/.config/nvim/Plugged/riv.vim/autoload/riv/cmd.vim
+177.259  000.244  000.244: sourcing /home/arden/.config/nvim/Plugged/riv.vim/autoload/riv/path.vim
+178.227  000.415  000.415: sourcing /home/arden/.config/nvim/Plugged/riv.vim/autoload/riv/ptn.vim
+179.119  071.124  069.456: sourcing /home/arden/.config/nvim/Plugged/riv.vim/plugin/riv.vim
+179.327  000.128  000.128: sourcing /home/arden/.config/nvim/Plugged/rust.vim/plugin/rust.vim
+179.484  000.093  000.093: sourcing /home/arden/.config/nvim/Plugged/vim-scala/plugin/scala.vim
+179.602  000.018  000.018: sourcing /home/arden/.config/nvim/Plugged/swift.vim/plugin/swift.vim
+179.711  000.041  000.041: sourcing /home/arden/.config/nvim/Plugged/vim-terraform/plugin/terraform.vim
+179.875  000.057  000.057: sourcing /home/arden/.config/nvim/Plugged/vala.vim/plugin/vala.vim
+180.497  000.021  000.021: sourcing /home/arden/.config/nvim/Plugged/vifm.vim/autoload/vifm/globals.vim
+181.326  001.385  001.363: sourcing /home/arden/.config/nvim/Plugged/vifm.vim/plugin/vifm.vim
+181.675  000.013  000.013: sourcing /usr/share/nvim/runtime/plugin/gui_shim.vim
+181.889  000.199  000.199: sourcing /usr/share/nvim/runtime/plugin/gzip.vim
+181.923  000.019  000.019: sourcing /usr/share/nvim/runtime/plugin/health.vim
+181.984  000.047  000.047: sourcing /usr/share/nvim/runtime/plugin/man.vim
+182.444  000.446  000.446: sourcing /usr/share/nvim/runtime/plugin/matchit.vim
+182.614  000.152  000.152: sourcing /usr/share/nvim/runtime/plugin/matchparen.vim
+183.045  000.415  000.415: sourcing /usr/share/nvim/runtime/plugin/netrwPlugin.vim
+183.967  000.141  000.141: sourcing /usr/share/nvim/runtime/autoload/remote/define.vim
+184.052  000.831  000.690: sourcing /home/arden/.local/share/nvim/rplugin.vim
+184.058  000.990  000.159: sourcing /usr/share/nvim/runtime/plugin/rplugin.vim
+184.091  000.013  000.013: sourcing /usr/share/nvim/runtime/plugin/rrhelper.vim
+184.199  000.089  000.089: sourcing /usr/share/nvim/runtime/plugin/shada.vim
+184.247  000.026  000.026: sourcing /usr/share/nvim/runtime/plugin/spellfile.vim
+184.399  000.133  000.133: sourcing /usr/share/nvim/runtime/plugin/tarPlugin.vim
+184.498  000.078  000.078: sourcing /usr/share/nvim/runtime/plugin/tohtml.vim
+184.555  000.038  000.038: sourcing /usr/share/nvim/runtime/plugin/tutor.vim
+184.759  000.185  000.185: sourcing /usr/share/nvim/runtime/plugin/zipPlugin.vim
+184.774  002.273: loading plugins
+185.001  000.227: loading packages
+185.454  000.037  000.037: sourcing /home/arden/.config/nvim/Plugged/tomdoc.vim/after/plugin/tomdoc.vim
+185.485  000.447: loading after plugins
+185.500  000.014: inits 3
+189.464  003.965: reading ShaDa
+190.228  000.764: clearing screen
+190.818  000.590: opening buffers
+191.495  000.360  000.360: sourcing /home/arden/.config/nvim/Plugged/julia-vim/autoload/LaTeXtoUnicode.vim
+192.279  000.492  000.492: sourcing /home/arden/.config/nvim/Plugged/julia-vim/autoload/julia_latex_symbols.vim
+195.890  004.221: BufEnter autocommands
+195.895  000.004: editing files in windows
+195.964  000.070: VimEnter autocommands
+195.989  000.025: before starting main loop
+198.288  002.299: first screen update
+198.291  000.003: --- NVIM STARTED ---
