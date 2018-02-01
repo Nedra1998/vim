@@ -1,5 +1,7 @@
 " Neovim Init.vim
-" Arden Rasmussen runtime! debian.vim
+" Arden Rasmussen @ 2018
+
+runtime! debian.vim
 " Plugins Installation {{{
 " ============================================================================
 call plug#begin('~/.config/nvim/Plugged')
@@ -162,6 +164,60 @@ Plug 'vim-scripts/XSLT-syntax'          " XSLT
 Plug 'stephpy/vim-yaml'                 " YAML
 Plug 'sheerun/vim-yardoc'               " YARD
 " }}}
+
+" }}}
+
+" Utilities {{{
+
+" Git {{{
+Plug 'tpope/vim-fugitive'
+" }}}
+" Motion {{{
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-unimpaired'
+Plug 'wesQ3/vim-windowswap'
+" }}}
+" Search {{{
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+" }}}
+
+" }}}
+
+" Tools {{{
+" }}}
+
+" Enviornment {{{
+
+" Airline {{{
+Plug 'vim-airline/vim-airline'
+" }}}
+" Search {{{
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" }}}
+" NERDTree {{{
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+" }}}
+" Gutter {{{
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'mhinz/vim-signify'
+" }}}
+" Tagbar {{{
+Plug 'majutsushi/tagbar'
+" }}}
+
+" }}}
+
+" WorkSpace {{{
+
+" Focus {{{
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+" }}}
+
 " }}}
 
 " Enviorment Tools {{{
@@ -179,9 +235,10 @@ Plug 'isotope-theme/vim'
 
 call plug#end()
 " }}}
-"
 nnoremap <space> za
 set foldmethod=marker
+
+au BufEnter *.zsh-theme set ft=zsh
 
 syntax enable
 set hlsearch
@@ -196,3 +253,6 @@ endif
 let g:material_primary = "blue"
 set background=dark
 colorscheme isotope
+let g:airline_isotope_bg='dark'
+let g:airline_theme = 'isotope'
+let g:airline_powerline_fonts = 1
