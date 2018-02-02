@@ -256,3 +256,4 @@ colorscheme isotope
 let g:airline_isotope_bg='dark'
 let g:airline_theme = 'isotope'
 let g:airline_powerline_fonts = 1
+set tabstop=8 softtabstop=0 shiftwidth=2 expandtab smarttab
