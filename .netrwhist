@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/arden/.config/nvim/Plugged/vim'
+let g:netrw_dirhist_2='/home/arden/.config/nvim/Plugged/vim/autoload'
+let g:netrw_dirhist_3='/home/arden/.config/nvim/Plugged/vim/autoload/airline'
+let g:netrw_dirhist_4='/home/arden/.config/nvim/Plugged/vim/autoload/airline/themes'

@@ -253,7 +253,7 @@ nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 " =====================================
 set foldmethod=syntax
 set foldlevel=99
-au BufRead,BufNew *.{lua,vim,css,xdefault}
+au BufRead,BufNew *.{lua,vim,css,xdefault,zsh}
       \ set foldmethod=marker
 au BufRead,BufNew *.{html}
       \ set foldmethod=indent
