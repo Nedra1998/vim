@@ -235,6 +235,10 @@ Plug 'isotope-theme/vim'
 
 call plug#end()
 " }}}
+
+" Key Mappings {{{
+" ============================================================================
+" }}}
 nnoremap <space> za
 set foldmethod=marker
 
