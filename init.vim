@@ -57,7 +57,7 @@ Plug 'vim-scripts/groovy.vim'           " Groovy
 " }}}
 " H {{{
 Plug 'sheerun/vim-haml'                 " Haml
-Plug 'mustache/vim-mustache-handlebars' " Handelbars
+Plug 'mustache/vim-mustache-handlebars' " Handlebars
 Plug 'neovimhaskell/haskell-vim'        " Haskell
 Plug 'yaymukund/vim-haxe'               " Haxe
 Plug 'othree/html5.vim'                 " HTML
@@ -172,6 +172,9 @@ Plug 'sheerun/vim-yardoc'               " YARD
 " Git {{{
 Plug 'tpope/vim-fugitive'
 " }}}
+" KeyControl {{{
+Plug 'ervandew/supertab'
+" }}}
 " Motion {{{
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
@@ -182,10 +185,17 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 " }}}
-
+" Snippets {{{
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" }}}
+" Commenter {{{
+Plug 'tomtom/tcomment_vim'
+" }}}
+" Auto Pairs {{{
+Plug 'jiangmiao/auto-pairs'
 " }}}
 
-" Tools {{{
 " }}}
 
 " Enviornment {{{
@@ -208,6 +218,15 @@ Plug 'mhinz/vim-signify'
 " Tagbar {{{
 Plug 'majutsushi/tagbar'
 " }}}
+" Completion {{{
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all --system-libclang' }
+" }}}
+" Formatter {{{
+Plug 'Chiel92/vim-autoformat'
+" }}}
+" Preview {{{
+Plug 'suan/vim-instant-markdown'
+" }}}
 
 " }}}
 
@@ -220,17 +239,9 @@ Plug 'junegunn/limelight.vim'
 
 " }}}
 
-" Enviorment Tools {{{
-" Plug 'kien/ctrlp.vim'
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" Plug 'xuyuanp/nerdtree-git-plug', { 'on': 'NERDTreeToggle' }
-" }}}
-
-" Plug 'tpope/vim-dispatch'
-" Plug 'radenling/vim-dispatch-neovim'
-
 " Color Scheme {{{
-Plug 'isotope-theme/vim'
+" Plug 'isotope-theme/vim'
+Plug '~/Programming/isotope/vim'
 " }}}
 
 call plug#end()
