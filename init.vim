@@ -3,7 +3,7 @@
 
 runtime! debian.vim
 " Plugins Installation {{{
-" ============================================================================
+" =============================================================================
 call plug#begin('~/.config/nvim/Plugged')
 
 " Language Support {{{
@@ -190,6 +190,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " }}}
 " Commenter {{{
+" Plug 'tpope/vim-commentary'
 Plug 'tomtom/tcomment_vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " }}}
@@ -242,15 +243,14 @@ Plug 'junegunn/limelight.vim'
 " }}}
 
 " Color Scheme {{{
-" Plug 'isotope-theme/vim'
-Plug '~/Programming/isotope/vim'
+Plug 'isotope-theme/vim'
 " }}}
 
 call plug#end()
 " }}}
 
 " Key Mappings {{{
-" ============================================================================
+" =============================================================================
 
 " F Keys {{{
 map <F2> :set spell! spelllang=en_us<CR>
@@ -261,6 +261,10 @@ imap <F5><c-o> :Autoformat<CR>
 " }}}
 " Code Folding {{{
 nnoremap <space> za
+" }}}
+" Commenter {{{
+nnoremap <C-\> :TComment<CR>
+vnoremap <C-\> :TCommentMaybeInline<CR>
 " }}}
 " Easymotion {{{
 map <leader>f <plug>(easymotion-bd-f)
@@ -278,7 +282,7 @@ noremap <silent> <leader>gc :Gcommit<CR>
 noremap <silent> <leader>gp :Gpush<CR>
 " }}}
 " FZF {{{
-map <C-p> :Files<CR>
+map <C-p> :Files <CR>
 map <C-b> :Buffers<CR>
 " map <C-w> :Windows<CR>
 " }}}
@@ -325,7 +329,7 @@ nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 " }}}
 
 " Vim Settings {{{
-" ============================================================================
+" =============================================================================
 
 " Code Folding {{{
 set foldmethod=syntax
@@ -351,8 +355,8 @@ if (empty($TMUX))
   endif
 endif
 set background=dark
-au BufNewFile,BufRead *.{md,rst,tex}
-      \ set background=light
+" au BufNewFile,BufRead *.{md,rst,tex}
+"       \ set background=light
 colorscheme isotope
 " }}}
 " Completion {{{
@@ -413,7 +417,7 @@ set timeout ttimeoutlen=50
 " }}}
 
 " Plugin Settings {{{
-" ============================================================================
+" =============================================================================
 
 " Airline {{{
 let g:airline_isotope_bg='dark'
@@ -432,6 +436,25 @@ let g:cpp_class_scope_highlight=1
 let g:cpp_member_variable_highlight=1
 let g:cpp_class_decl_highlight=1
 let g:cpp_experimental_template_highlight=1
+" }}}
+" Commenter {{{
+
+" }}}
+" FZF {{{
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 " }}}
 " Incsearch {{{
 let g:incsearch#auto_nohlsearch=1
@@ -460,6 +483,25 @@ let g:ycm_collect_identifiers_from_tag_files = 1
 " let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp' : 1, 'python': 1, 'c' : 1 , 'h' : 1 }
 let g:ycm_show_diagnostics_ui = 0
 " }}}
+
+" }}}
+
+" Functions {{{
+" =============================================================================
+
+" FZF {{{
+function! GFilesFallback()
+  let output = system('git rev-parse --show-toplevel')
+  let prefix = get(g:, 'fzf_command_prefix', '')
+  if v:shell_error == 0
+    exec "normal :" . prefix . "GFiles\<CR>"
+  else
+    exec "normal :" . prefix . "Files\<CR>"
+  endif
+  return 0
+endfunction
+" }}}
+
 
 " }}}
 
