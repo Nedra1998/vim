@@ -191,6 +191,7 @@ Plug 'honza/vim-snippets'
 " }}}
 " Commenter {{{
 Plug 'tomtom/tcomment_vim'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 " }}}
 " Auto Pairs {{{
 Plug 'jiangmiao/auto-pairs'
@@ -202,6 +203,7 @@ Plug 'jiangmiao/auto-pairs'
 
 " Airline {{{
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " }}}
 " Search {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -249,26 +251,216 @@ call plug#end()
 
 " Key Mappings {{{
 " ============================================================================
+
+" F Keys {{{
+map <F2> :set spell! spelllang=en_us<CR>
+map <F3> :NERDTreeToggle<CR>
+map <F4> :TagbarToggle<CR>
+map <F5> :Autoformat<CR>
+imap <F5><c-o> :Autoformat<CR>
 " }}}
+" Code Folding {{{
 nnoremap <space> za
-set foldmethod=marker
+" }}}
+" Easymotion {{{
+map <leader>f <plug>(easymotion-bd-f)
+nmap <leader>f <plug>(easymotion-overwin-f)
+nmap s <plug>(easymotion-overwin-f2)
+map <leader>L <plug>(easymotion-bd-jk)
+nmap <leader>L <plug>(easymotion-overwin-line)
+map <leader>w <plug>(easymotion-bd-w)
+nmap <leader>w <plug>(easymotion-overwin-w)
+" }}}
+" Fugitive {{{
+noremap <silent> <Leader>gst :Gstatus<CR>
+noremap <silent> <leader>ga :Gwrite<CR>
+noremap <silent> <leader>gc :Gcommit<CR>
+noremap <silent> <leader>gp :Gpush<CR>
+" }}}
+" FZF {{{
+map <C-p> :Files<CR>
+map <C-b> :Buffers<CR>
+" map <C-w> :Windows<CR>
+" }}}
+" Incsearch {{{
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+map e/ <Plug>(incsearch-easymotion-/)
+map e? <Plug>(incsearch-easymotion-?)
+map eg/ <Plug>(incsearch-easymotion-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+" }}}
+" Movement {{{
+noremap <A-l> 5l
+noremap <A-h> 5h
+noremap <A-k> 5k
+noremap <A-j> 5j
+" }}}
+" Split Navigation {{{
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-h> <C-W><C-H>
+" }}}
+" Tab Navigation {{{
+nnoremap <C-I> :tabnext<CR>
+inoremap <C-I> <Esc>:tabnext<CR>i
+nnoremap t :tabnew<CR>
+" }}}
+" Window Swap {{{
+nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
+nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
+" }}}
 
-au BufEnter *.zsh-theme set ft=zsh
+" }}}
 
+" Vim Settings {{{
+" ============================================================================
+
+" Code Folding {{{
+set foldmethod=syntax
+set foldlevel=99
+au BufRead,BufNew *.{lua,vim,css,xdefault,zsh}
+      \ set foldmethod=marker
+au BufRead,BufNew *.vim
+      \ set foldlevel=0
+" }}}
+" Color Scheme {{{
+if has("termguicolors")
+  set termguicolors
+endif
 syntax enable
 set hlsearch
+let g:material_primary="blue"
 if (empty($TMUX))
-	if(has("nvim"))
-		let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-	endif
-	if (has("termguicolors"))
-		set termguicolors
-	endif
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 endif
-let g:material_primary = "blue"
 set background=dark
+au BufNewFile,BufRead *.{md,rst,tex}
+      \ set background=light
 colorscheme isotope
-let g:airline_isotope_bg='dark'
-let g:airline_theme = 'isotope'
-let g:airline_powerline_fonts = 1
+" }}}
+" Completion {{{
+set completeopt-=preview
+" }}}
+" Conceal {{{
+set conceallevel=2
+" }}}
+" Encoding {{{
+set encoding=utf-8
+" }}}
+" Indentation {{{
+filetype plugin indent on
+" }}}
+" Jump to Last Position {{{
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" }}}
+" Latex {{{
+let g:tex_flavor="latex"
+" }}}
+" Line Length {{{
+set colorcolumn=80
+au BufNewFile,BufRead *.{md,rst,tex}
+      \ set textwidth=79
+" }}}
+" Mouse {{{
+set mouse=
+" }}}
+" Numbering {{{
+set number relativenumber
+" }}}
+" Shell {{{
+if $SHELL =~ 'bin/fish'
+  set shell=/bin/bash
+endif
+" }}}
+" Show Matching {{{
+set showmatch
+" }}}
+" Status Line {{{
+set noruler
+set statusline=%t
+set laststatus=2
+" }}}
+" Tab {{{
 set tabstop=8 softtabstop=0 shiftwidth=2 expandtab smarttab
+au BufNewFile,BufRead *.py
+      \ set softtabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.rst
+      \ set softtabstop=3 shiftwidth=3
+" }}}
+" Update {{{
+set t_Co=256
+set updatetime=250
+set timeout ttimeoutlen=50
+" }}}
+
+" }}}
+
+" Plugin Settings {{{
+" ============================================================================
+
+" Airline {{{
+let g:airline_isotope_bg='dark'
+au BufNewFile,BufRead *.{md,rst,text}
+      \ let g:airline_isotope_bg='light'
+let g:airline_theme='isotope'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+" }}}
+" Auto Format {{{
+au BufWrite *.{cpp,hpp,c,h,json,js,css,py,md} :Autoformat
+let g:formatter_yapf_style='google'
+" }}}
+" C++ Highlighting {{{
+let g:cpp_class_scope_highlight=1
+let g:cpp_member_variable_highlight=1
+let g:cpp_class_decl_highlight=1
+let g:cpp_experimental_template_highlight=1
+" }}}
+" Incsearch {{{
+let g:incsearch#auto_nohlsearch=1
+" }}}
+" Supertab {{{
+let g:SuperTabDefaultCompletionType='<C-n>'
+" }}}
+" UltiSnips {{{
+let g:snips_author="Arden Rasmussen"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" }}}
+" VimTex {{{
+let g:vimtex_fold_enabled=1
+" }}}
+" Window Swap {{{
+let g:windowswap_map_keys=0
+" }}}
+" You Complete Me {{{
+let g:ycm_key_list_select_completion=['<C-n>', '<Down']
+let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+let g:ycm_complete_in_comments = 0
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_collect_identifiers_from_tag_files = 1
+" let g:ycm_filetype_whitelist = { 'cpp': 1, 'hpp' : 1, 'python': 1, 'c' : 1 , 'h' : 1 }
+let g:ycm_show_diagnostics_ui = 0
+" }}}
+
+" }}}
+
+" au BufEnter *.zsh-theme set ft=zsh
