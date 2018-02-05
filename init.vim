@@ -128,6 +128,7 @@ Plug 'vim-ruby/vim-ruby'                " Ruby
 Plug 'rust-lang/rust.vim'               " Rust
 " }}}
 " S {{{
+Plug 'petRUShka/vim-sage'               " Sage
 Plug 'derekwyatt/vim-sbt'               " SBT
 Plug 'derekwyatt/vim-scala'             " Scala
 Plug 'cakebaker/scss-syntax.vim'        " SCSS
@@ -435,7 +436,6 @@ let g:formatter_yapf_style='google'
 let g:cpp_class_scope_highlight=1
 let g:cpp_member_variable_highlight=1
 let g:cpp_class_decl_highlight=1
-let g:cpp_experimental_template_highlight=1
 " }}}
 " Commenter {{{
 
