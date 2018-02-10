@@ -123,7 +123,7 @@ Plug 'wlangstroth/vim-racket'           " Racket
 Plug 'jneen/ragel.vim'                  " Ragel
 Plug 'IN3D/vim-raml'                    " Raml
 Plug 'sheerun/rspec.vim'                " RSpec
-Plug 'gu-fan/riv.vim'                   " rST
+" Plug 'gu-fan/riv.vim'                   " rST
 Plug 'vim-ruby/vim-ruby'                " Ruby
 Plug 'rust-lang/rust.vim'               " Rust
 " }}}
@@ -207,6 +207,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " }}}
+" ALE {{{
+Plug 'w0rp/ale'
+" }}}
 " Search {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -245,6 +248,7 @@ Plug 'junegunn/limelight.vim'
 
 " Color Scheme {{{
 Plug 'isotope-theme/vim'
+Plug 'NLKNguyen/papercolor-theme'
 " }}}
 
 call plug#end()
@@ -259,6 +263,10 @@ map <F3> :NERDTreeToggle<CR>
 map <F4> :TagbarToggle<CR>
 map <F5> :Autoformat<CR>
 imap <F5><c-o> :Autoformat<CR>
+" }}}
+" ALE {{{
+nmap <silent> [l <Plug>(ale_previous_wrap)
+nmap <silent> ]l <Plug>(ale_next_wrap)
 " }}}
 " Code Folding {{{
 nnoremap <space> za
@@ -356,8 +364,8 @@ if (empty($TMUX))
   endif
 endif
 set background=dark
-" au BufNewFile,BufRead *.{md,rst,tex}
-"       \ set background=light
+au BufNewFile,BufRead *.{md,rst,tex}
+      \ set background=light
 colorscheme isotope
 " }}}
 " Completion {{{
@@ -397,6 +405,9 @@ endif
 " Show Matching {{{
 set showmatch
 " }}}
+" Spelling {{{
+syn spell toplevel
+" }}}
 " Status Line {{{
 set noruler
 set statusline=%t
@@ -427,15 +438,21 @@ au BufNewFile,BufRead *.{md,rst,text}
 let g:airline_theme='isotope'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#ale#enabled=1
+autocmd BufEnter * AirlineRefresh
+" }}}
+" ALE {{{
+let g:ale_sign_error = 'E>'
+let g:ale_sign_warning = 'W>'
+let g:ale_sign_style_error = 'S>'
+let g:ale_sign_style_warning = 's>'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " }}}
 " Auto Format {{{
 au BufWrite *.{cpp,hpp,c,h,json,js,css,py,md} :Autoformat
 let g:formatter_yapf_style='google'
-" }}}
-" C++ Highlighting {{{
-let g:cpp_class_scope_highlight=1
-let g:cpp_member_variable_highlight=1
-let g:cpp_class_decl_highlight=1
 " }}}
 " Commenter {{{
 
@@ -486,6 +503,20 @@ let g:ycm_show_diagnostics_ui = 0
 
 " }}}
 
+" Language Settings {{{
+" =============================================================================
+
+" C++ Highlighting {{{
+let g:cpp_class_scope_highlight=1
+let g:cpp_member_variable_highlight=1
+let g:cpp_class_decl_highlight=1
+" }}}
+" Markdown {{{
+let g:vim_markdown_math=1
+" }}}
+
+" }}}
+
 " Functions {{{
 " =============================================================================
 
@@ -504,5 +535,3 @@ endfunction
 
 
 " }}}
-
-" au BufEnter *.zsh-theme set ft=zsh
