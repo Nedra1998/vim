@@ -113,6 +113,7 @@ Plug 'digitaltoad/vim-pug'              " Pug
 Plug 'voxpupuli/vim-puppet'             " Puppet
 Plug 'purescript-contrib/purescript-vim' " PureScript
 Plug 'python-mode/python-mode'          " Python
+Plug 'hdima/python-syntax'
 " }}}
 " Q {{{
 Plug 'peterhoeg/vim-qml'                " QML
