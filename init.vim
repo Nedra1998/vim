@@ -45,7 +45,7 @@ Plug 'vim-erlang/vim-erlang-runtime'    " Erlang
 " }}}
 " F {{{
 Plug 'dag/vim-fish'                     " Fish
-Plug 'fsharp/vim-fsharp'                " F#
+Plug 'fsharp/vim-fsharp', {'for': 'fsharp', 'do': 'make fsautocomplete'} " F#
 " }}}
 " G {{{
 Plug 'tpope/vim-git'                    " Git
@@ -53,6 +53,7 @@ Plug 'tikhomirov/vim-glsl'              " GLSL
 Plug 'maelvalais/gmpl.vim'              " GMPL
 Plug 'vim-scripts/gnuplot-syntax-highlighting' " GNUPlot
 Plug 'fatih/vim-go'                     " Go
+Plug 'wannesm/wmgraphviz.vim'           " GraphViz
 Plug 'vim-scripts/groovy.vim'           " Groovy
 " }}}
 " H {{{
@@ -112,8 +113,9 @@ Plug 'uarun/vim-protobuf'               " Protobuf
 Plug 'digitaltoad/vim-pug'              " Pug
 Plug 'voxpupuli/vim-puppet'             " Puppet
 Plug 'purescript-contrib/purescript-vim' " PureScript
-Plug 'python-mode/python-mode'          " Python
-Plug 'hdima/python-syntax'
+" Plug 'python-mode/python-mode'          " Python
+" Plug 'hdima/python-syntax'
+Plug 'vim-python/python-syntax'
 " }}}
 " Q {{{
 Plug 'peterhoeg/vim-qml'                " QML
@@ -150,6 +152,7 @@ Plug 'wellbredgrapefruit/tomdoc.vim'    " TomDoc
 Plug 'cespare/vim-toml'                 " TOML
 Plug 'lumiliet/vim-twig'                " Twig
 Plug 'leafgarland/typescript-vim'       " TypeScript
+Plug 'HerringtonDarkholme/yats.vim'
 " }}}
 " V {{{
 Plug 'arrufat/vala.vim'                 " Vala
@@ -171,6 +174,12 @@ Plug 'sheerun/vim-yardoc'               " YARD
 
 " Utilities {{{
 
+" Django {{{
+Plug 'Nedra1998/django-plus.vim'
+" }}}
+" Emmet {{{
+Plug 'mattn/emmet-vim'
+" }}}
 " Git {{{
 Plug 'tpope/vim-fugitive'
 " }}}
@@ -191,6 +200,9 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " }}}
+" todo {{{
+Plug 'jontrainor/TaskList.vim'
+" }}}
 " Commenter {{{
 " Plug 'tpope/vim-commentary'
 Plug 'tomtom/tcomment_vim'
@@ -198,6 +210,9 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 " }}}
 " Auto Pairs {{{
 Plug 'jiangmiao/auto-pairs'
+" }}}
+" Lorem {{{
+Plug 'vim-scripts/loremipsum'
 " }}}
 
 " }}}
@@ -243,6 +258,15 @@ Plug 'suan/vim-instant-markdown'
 " Focus {{{
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+" }}}
+" FileSwitch{{{
+Plug 'vim-scripts/a.vim'
+" }}}
+" Paren {{{
+Plug 'kien/rainbow_parentheses.vim'
+" }}}
+" WakaTime {{{
+Plug 'wakatime/vim-wakatime'
 " }}}
 
 " }}}
@@ -330,6 +354,9 @@ nnoremap <C-I> :tabnext<CR>
 inoremap <C-I> <Esc>:tabnext<CR>i
 nnoremap t :tabnew<CR>
 " }}}
+" TaskList {{{
+map <leader>t <Plug>TaskList
+" }}}
 " Window Swap {{{
 nnoremap <silent> <leader>yw :call WindowSwap#MarkWindowSwap()<CR>
 nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
@@ -384,6 +411,16 @@ filetype plugin indent on
 " Jump to Last Position {{{
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " }}}
+" PyEnv {{{
+" let g:python_host_prog = "~/.pyenv/versions/2.7.14/bin/python"
+" let g:python3_host_prog = "~/.pyenv/versions/3.6.4/bin/python"
+" let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')
+" if g:python_version =~ 3
+"   let g:python2_host_prog = "/usr/local/bin/python2"
+" else
+"   let g:python3_host_prog = "/usr/local/bin/python3"
+" endif
+" }}}
 " Latex {{{
 let g:tex_flavor="latex"
 " }}}
@@ -434,7 +471,7 @@ set timeout ttimeoutlen=50
 
 " Airline {{{
 let g:airline_isotope_bg='dark'
-au BufNewFile,BufRead *.{md,rst,text}
+au BufNewFile,BufRead *.{md,rst,text,tex}
       \ let g:airline_isotope_bg='light'
 let g:airline_theme='isotope'
 let g:airline_powerline_fonts=1
@@ -450,32 +487,69 @@ let g:ale_sign_style_warning = 's>'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" Cpp {{{
+let g:ale_cpp_clang_executable = 'clang++-5.0'
+let g:ale_cpp_clang_options = '-std=c++17 -Wall'
+let g:ale_cpp_gcc_executable = 'g++-7'
+let g:ale_cpp_gcc_options = '-std=c++17 -Wall'
+let g:ale_c_clang_executable = 'clang-5.0'
+let g:ale_c_clang_options = '-Wall -lm'
+let g:ale_c_gcc_executable = 'gcc-7'
+let g:ale_c_gcc_options = '-Wall -lm'
+" }}}
+
 " }}}
 " Auto Format {{{
-au BufWrite *.{cpp,hpp,c,h,json,js,css,py,md} :Autoformat
-let g:formatter_yapf_style='google'
+" au BufWrite *.{cpp,hpp,c,h,json,js,css,py,md} :Autoformat
+" let g:formatter_yapf_style='google'
 " }}}
 " Commenter {{{
 
 " }}}
+" Emmet {{{
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+" }}}
 " FZF {{{
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+      \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'PreProc'],
+      \ 'border':  ['fg', 'Ignore'],
+      \ 'prompt':  ['fg', 'Conditional'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
 " }}}
 " Incsearch {{{
 let g:incsearch#auto_nohlsearch=1
+" }}}
+" Paren {{{
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
 " }}}
 " Supertab {{{
 let g:SuperTabDefaultCompletionType='<C-n>'
@@ -488,6 +562,7 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 " }}}
 " VimTex {{{
 let g:vimtex_fold_enabled=1
+let g:vimtex_view_method='zathura'
 " }}}
 " Window Swap {{{
 let g:windowswap_map_keys=0
@@ -515,6 +590,9 @@ let g:cpp_class_decl_highlight=1
 " Markdown {{{
 let g:vim_markdown_math=1
 " }}}
+" Python {{{
+let g:python_highlight_all = 1
+" }}}
 
 " }}}
 
@@ -533,6 +611,5 @@ function! GFilesFallback()
   return 0
 endfunction
 " }}}
-
 
 " }}}

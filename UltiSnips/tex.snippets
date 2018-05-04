@@ -37,3 +37,24 @@ snippet code "Code"
 ${VISUAL} $0
 \end{minted}
 endsnippet
+
+snippet pre "Preamble"
+\documentclass[$1]{${article:$2}}
+\usepackage{amsmath}
+\usepackage{csquotes}
+\usepackage{enumitem}
+
+\title{$3}
+
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+$0
+\end{document}
+endsnippet
