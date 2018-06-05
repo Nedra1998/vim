@@ -214,6 +214,9 @@ Plug 'jiangmiao/auto-pairs'
 " Lorem {{{
 Plug 'vim-scripts/loremipsum'
 " }}}
+" Table {{{
+Plug 'dhruvasagar/vim-table-mode'
+" }}}
 
 " }}}
 
@@ -553,6 +556,25 @@ let g:rbpt_max = 16
 " }}}
 " Supertab {{{
 let g:SuperTabDefaultCompletionType='<C-n>'
+" }}}
+" TableMode {{{
+let g:table_mode_corner='|'
+" }}}
+" Tagbar {{{
+let g:tagbar_type_rst = {
+    \ 'ctagstype': 'rst',
+    \ 'ctagsbin' : '~/.config/nvim/scripts/rst2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+    \ }
 " }}}
 " UltiSnips {{{
 let g:snips_author="Arden Rasmussen"
