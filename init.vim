@@ -52,7 +52,7 @@ Plug 'tpope/vim-git'                    " Git
 Plug 'tikhomirov/vim-glsl'              " GLSL
 Plug 'maelvalais/gmpl.vim'              " GMPL
 Plug 'vim-scripts/gnuplot-syntax-highlighting' " GNUPlot
-Plug 'fatih/vim-go'                     " Go
+" Plug 'fatih/vim-go'                     " Go
 Plug 'wannesm/wmgraphviz.vim'           " GraphViz
 Plug 'vim-scripts/groovy.vim'           " Groovy
 " }}}
@@ -70,6 +70,7 @@ Plug 'PotatoesMaster/i3-vim-syntax'     " i3
 Plug 'glanotte/vim-jasmine'             " Jasmine
 Plug 'pangloss/vim-javascript'          " JavaScript
 Plug 'martinda/Jenkinsfile-vim-syntax'  " Jenkins
+Plug 'Glench/Vim-Jinja2-Syntax'         " Jinja2
 Plug 'GutenYe/json5.vim'                " Json5
 Plug 'elzr/vim-json'                    " Json
 Plug 'briancollins/vim-jst'             " Jst
@@ -90,6 +91,8 @@ Plug 'tbastos/vim-lua'                  " Lua
 " M {{{
 Plug 'sophacles/vim-bundle-mako'        " Mako
 Plug 'plasticboy/vim-markdown'          " Markdown
+" Plug 'vim-pandoc/vim-pandoc'     
+" Plug 'vim-pandoc/vim-pandoc-syntax'     
 Plug 'rsmenon/vim-mathematica'          " Mathematica
 " }}}
 " N {{{
@@ -182,6 +185,7 @@ Plug 'mattn/emmet-vim'
 " }}}
 " Git {{{
 Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-conflicted'
 " }}}
 " KeyControl {{{
 Plug 'ervandew/supertab'
@@ -246,12 +250,13 @@ Plug 'majutsushi/tagbar'
 " }}}
 " Completion {{{
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all --system-libclang' }
+Plug 'davidhalter/jedi-vim'
 " }}}
 " Formatter {{{
 Plug 'Chiel92/vim-autoformat'
 " }}}
 " Preview {{{
-Plug 'suan/vim-instant-markdown'
+" Plug 'suan/vim-instant-markdown'
 " }}}
 
 " }}}
@@ -270,6 +275,9 @@ Plug 'kien/rainbow_parentheses.vim'
 " }}}
 " WakaTime {{{
 Plug 'wakatime/vim-wakatime'
+" }}}
+" Guides {{{
+Plug 'nathanaelkane/vim-indent-guides'
 " }}}
 
 " }}}
@@ -291,6 +299,9 @@ map <F3> :NERDTreeToggle<CR>
 map <F4> :TagbarToggle<CR>
 map <F5> :Autoformat<CR>
 imap <F5><c-o> :Autoformat<CR>
+" }}}
+" Terminal Mode {{{
+tnoremap <Esc> <C-\><C-n>
 " }}}
 " ALE {{{
 nmap <silent> [l <Plug>(ale_previous_wrap)
@@ -374,9 +385,13 @@ nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 " Code Folding {{{
 set foldmethod=syntax
 set foldlevel=99
-au BufRead,BufNew *.{lua,vim,css,xdefault,zsh}
+au BufRead,BufNew *.{lua,vim,css,xdefault,zsh,sh}
       \ set foldmethod=marker
 au BufRead,BufNew *.vim
+      \ set foldlevel=0
+au BufRead,BufNew Makefile
+      \ set foldmethod=marker
+au BufRead,BufNew Makefile
       \ set foldlevel=0
 " }}}
 " Color Scheme {{{
@@ -479,6 +494,7 @@ au BufNewFile,BufRead *.{md,rst,text,tex}
 let g:airline_theme='isotope'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tagbar#flags = 'f'
 let g:airline#extensions#ale#enabled=1
 autocmd BufEnter * AirlineRefresh
 " }}}
@@ -500,12 +516,13 @@ let g:ale_c_clang_executable = 'clang-5.0'
 let g:ale_c_clang_options = '-Wall -lm'
 let g:ale_c_gcc_executable = 'gcc-7'
 let g:ale_c_gcc_options = '-Wall -lm'
+let g:ale_cpp_cppcheck_options = "--enable=all"
 " }}}
 
 " }}}
 " Auto Format {{{
 " au BufWrite *.{cpp,hpp,c,h,json,js,css,py,md} :Autoformat
-" let g:formatter_yapf_style='google'
+let g:formatter_yapf_style='google'
 " }}}
 " Commenter {{{
 
@@ -575,6 +592,20 @@ let g:tagbar_type_rst = {
     \ },
     \ 'sort': 0,
     \ }
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '~/.config/nvim/scripts/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+    \ }
 " }}}
 " UltiSnips {{{
 let g:snips_author="Arden Rasmussen"
@@ -609,8 +640,15 @@ let g:cpp_class_scope_highlight=1
 let g:cpp_member_variable_highlight=1
 let g:cpp_class_decl_highlight=1
 " }}}
+" Fortran {{{
+let fortran_free_source=1
+let fortran_have_tabs=1
+let fortran_more_precise=1
+let fortran_do_enddo=1
+" }}}
 " Markdown {{{
 let g:vim_markdown_math=1
+" au BufWrite *.md call MarkdownCompile(1)
 " }}}
 " Python {{{
 let g:python_highlight_all = 1
@@ -632,6 +670,18 @@ function! GFilesFallback()
   endif
   return 0
 endfunction
+" }}}
+" Markdown {{{
+" let g:toggleMarkdownCompile = 0
+" function! MarkdownCompile(...)
+"   if a:0 == 1
+"     let g:toggleMarkdownCompile = 1 - g:toggleMarkdownCompile
+"   endif
+"   if g:toggleMarkdownCompile == 1
+"     silent !pandoc % -o %<.pdf
+"   endif
+" endfunction
+" command! MarkdownCompile call MarkdownCompile()
 " }}}
 
 " }}}
