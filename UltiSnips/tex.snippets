@@ -39,7 +39,7 @@ ${VISUAL} $0
 endsnippet
 
 snippet pre "Preamble"
-\documentclass[$1]{${article:$2}}
+\documentclass[$1]{amsart}
 \usepackage{amsmath}
 \usepackage{csquotes}
 \usepackage{enumitem}
@@ -57,4 +57,13 @@ snippet pre "Preamble"
 
 $0
 \end{document}
+endsnippet
+
+snippet algo "Algorithm"
+\begin{algorithm}[H]
+  \caption{$1}
+  \begin{algorithmic}
+    ${VISUAL} $0
+  \end{algorithmic}
+\end{algorithm}
 endsnippet

@@ -15,6 +15,7 @@ Plug 'vim-scripts/applescript.vim'      " AppleScript
 Plug 'sudar/vim-arduino-syntax'         " Arduino
 Plug 'asciidoc/vim-asciidoc'            " AsciiDoc
 Plug 'hnamikaw/vim-autohotkey'          " AutoHotKey
+Plug 'hura/vim-asymptote'               " Asymptote
 " }}}
 " B {{{
 Plug 'jwalton512/vim-blade'             " Blade
@@ -249,11 +250,12 @@ Plug 'mhinz/vim-signify'
 Plug 'majutsushi/tagbar'
 " }}}
 " Completion {{{
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all --system-libclang' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'davidhalter/jedi-vim'
 " }}}
 " Formatter {{{
 Plug 'Chiel92/vim-autoformat'
+Plug 'junegunn/vim-easy-align'
 " }}}
 " Preview {{{
 " Plug 'suan/vim-instant-markdown'
@@ -307,8 +309,13 @@ tnoremap <Esc> <C-\><C-n>
 nmap <silent> [l <Plug>(ale_previous_wrap)
 nmap <silent> ]l <Plug>(ale_next_wrap)
 " }}}
+" Clipboard {{{
+vnoremap <leader>y "+y
+nnoremap <leader>y "+y
+" }}}
 " Code Folding {{{
 nnoremap <space> za
+au FileType markdown vmap <leader>a :EasyAlign*<BAR><CR>
 " }}}
 " Commenter {{{
 nnoremap <C-\> :TComment<CR>
@@ -615,6 +622,7 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 " }}}
 " VimTex {{{
 let g:vimtex_fold_enabled=1
+let g:vimtex_quickfix_latexlog = {'default' : 0}
 let g:vimtex_view_method='zathura'
 " }}}
 " Window Swap {{{
