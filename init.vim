@@ -19,6 +19,7 @@ Plug 'hura/vim-asymptote'               " Asymptote
 " }}}
 " B {{{
 Plug 'jwalton512/vim-blade'             " Blade
+Plug 'vim-scripts/bnf.vim'              " BNF
 " }}}
 " C {{{
 Plug 'octol/vim-cpp-enhanced-highlight' " C++
@@ -38,6 +39,7 @@ Plug 'tpope/vim-cucumber'               " Cucumber
 Plug 'dart-lang/dart-vim-plugin'        " Dart
 " }}}
 " E {{{
+Plug 'vim-scripts/ebnf.vim'             " EBNF
 Plug 'elixir-editors/vim-elixir'        " Elixier
 Plug 'ElmCast/elm-vim'                  " Elm
 Plug 'yalesov/vim-ember-script'         " EmberScript
@@ -83,8 +85,9 @@ Plug 'udalov/kotlin-vim'                " Kotlin
 " }}}
 " L {{{
 Plug 'lervag/vimtex'                    " Latex
+Plug 'vim-scripts/lbnf.vim'             " LBNF
 Plug 'groenewege/vim-less'              " LESS
-Plug 'tpope/vim-liquid'                 " Liquid
+" Plug 'tpope/vim-liquid'                 " Liquid
 Plug 'kovisoft/slimv'                   " Lisp
 Plug 'gkz/vim-ls'                       " LiveScript
 Plug 'tbastos/vim-lua'                  " Lua
@@ -92,8 +95,8 @@ Plug 'tbastos/vim-lua'                  " Lua
 " M {{{
 Plug 'sophacles/vim-bundle-mako'        " Mako
 Plug 'plasticboy/vim-markdown'          " Markdown
-" Plug 'vim-pandoc/vim-pandoc'     
-" Plug 'vim-pandoc/vim-pandoc-syntax'     
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'rsmenon/vim-mathematica'          " Mathematica
 " }}}
 " N {{{
@@ -221,6 +224,9 @@ Plug 'vim-scripts/loremipsum'
 " }}}
 " Table {{{
 Plug 'dhruvasagar/vim-table-mode'
+" }}}
+" Colors {{{
+Plug 'chrisbra/Colorizer'
 " }}}
 
 " }}}
@@ -503,6 +509,7 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tagbar#flags = 'f'
 let g:airline#extensions#ale#enabled=1
+let g:airline#extensions#wordcount#enabled=1
 autocmd BufEnter * AirlineRefresh
 " }}}
 " ALE {{{
@@ -553,6 +560,9 @@ let g:fzf_colors =
       \ 'marker':  ['fg', 'Keyword'],
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
+" }}}
+" GoYo {{{
+let g:goyo_width = 80
 " }}}
 " Incsearch {{{
 let g:incsearch#auto_nohlsearch=1
@@ -643,6 +653,9 @@ let g:ycm_show_diagnostics_ui = 0
 " Language Settings {{{
 " =============================================================================
 
+" BNF {{{
+au bufreadpre,bufnewfile *.bnf set ft=bnf
+" }}}
 " C++ Highlighting {{{
 let g:cpp_class_scope_highlight=1
 let g:cpp_member_variable_highlight=1
@@ -653,6 +666,9 @@ let fortran_free_source=1
 let fortran_have_tabs=1
 let fortran_more_precise=1
 let fortran_do_enddo=1
+" }}}
+" LBNF {{{
+au bufreadpre,bufnewfile *.lbnf set ft=lbnf
 " }}}
 " Markdown {{{
 let g:vim_markdown_math=1
@@ -667,6 +683,9 @@ let g:python_highlight_all = 1
 " Functions {{{
 " =============================================================================
 
+" Note {{{
+command! -bang Note :Goyo | Limelight
+" }}}
 " FZF {{{
 function! GFilesFallback()
   let output = system('git rev-parse --show-toplevel')
