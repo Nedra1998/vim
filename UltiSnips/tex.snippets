@@ -67,3 +67,14 @@ snippet algo "Algorithm"
   \end{algorithmic}
 \end{algorithm}
 endsnippet
+
+snippet Fig "Special Figure"
+\begin{Figure}
+\begin{center}
+\input{$1}
+\end{center}
+\captionof{figure}{$2}
+\label{fig:$3}
+\end{Figure}
+$0
+endsnippet

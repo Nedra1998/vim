@@ -24,3 +24,13 @@ snippet guard "Header Guard"
 ${0:${VISUAL}}
 #endif  // $1
 endsnippet
+
+snippet cpp "C++ Support"
+#ifdef cplusplus__
+extern "C" {
+#endif
+${0:${VISUAL}}
+#ifdef cplusplus__
+}
+#endif
+endsnippet

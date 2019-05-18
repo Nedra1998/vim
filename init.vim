@@ -34,6 +34,7 @@ Plug 'elubow/cql-vim'                   " CQL
 Plug 'victoredwardocallaghan/cryptol.vim' " Cryptol
 Plug 'rhysd/vim-crystal'                " Crystal
 Plug 'tpope/vim-cucumber'               " Cucumber
+Plug 'chrisbra/csv.vim'                 " CSV
 " }}}
 " D {{{
 Plug 'dart-lang/dart-vim-plugin'        " Dart
@@ -240,6 +241,9 @@ Plug 'vim-airline/vim-airline-themes'
 " ALE {{{
 Plug 'w0rp/ale'
 " }}}
+" Eunuch {{{
+Plug 'tpope/vim-eunuch' 
+" }}}
 " Search {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -265,6 +269,9 @@ Plug 'junegunn/vim-easy-align'
 " }}}
 " Preview {{{
 " Plug 'suan/vim-instant-markdown'
+" }}}
+" Multi Cursors {{{
+Plug 'terryma/vim-multiple-cursors' 
 " }}}
 
 " }}}
@@ -406,6 +413,8 @@ au BufRead,BufNew Makefile
       \ set foldmethod=marker
 au BufRead,BufNew Makefile
       \ set foldlevel=0
+au BufRead,BufNew CMakeLists.txt
+      \ set foldmethod=marker
 " }}}
 " Color Scheme {{{
 if has("termguicolors")
@@ -522,6 +531,7 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " Cpp {{{
+let g:ale_linters = { 'cpp': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder'] }
 let g:ale_cpp_clang_executable = 'clang++-5.0'
 let g:ale_cpp_clang_options = '-std=c++17 -Wall'
 let g:ale_cpp_gcc_executable = 'g++-7'
@@ -537,6 +547,9 @@ let g:ale_cpp_cppcheck_options = "--enable=all"
 " Auto Format {{{
 " au BufWrite *.{cpp,hpp,c,h,json,js,css,py,md} :Autoformat
 let g:formatter_yapf_style='google'
+
+let g:formatdef_lua_fmt = '"luafmt -l 80 -i 2 --stdin"'
+let g:formatters_lua = ['lua_fmt']
 " }}}
 " Commenter {{{
 
@@ -569,23 +582,23 @@ let g:incsearch#auto_nohlsearch=1
 " }}}
 " Paren {{{
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+      \ ['brown',       'RoyalBlue3'],
+      \ ['Darkblue',    'SeaGreen3'],
+      \ ['darkgray',    'DarkOrchid3'],
+      \ ['darkgreen',   'firebrick3'],
+      \ ['darkcyan',    'RoyalBlue3'],
+      \ ['darkred',     'SeaGreen3'],
+      \ ['darkmagenta', 'DarkOrchid3'],
+      \ ['brown',       'firebrick3'],
+      \ ['gray',        'RoyalBlue3'],
+      \ ['black',       'SeaGreen3'],
+      \ ['darkmagenta', 'DarkOrchid3'],
+      \ ['Darkblue',    'firebrick3'],
+      \ ['darkgreen',   'RoyalBlue3'],
+      \ ['darkcyan',    'SeaGreen3'],
+      \ ['darkred',     'DarkOrchid3'],
+      \ ['red',         'firebrick3'],
+      \ ]
 let g:rbpt_max = 16
 " }}}
 " Supertab {{{
@@ -596,33 +609,33 @@ let g:table_mode_corner='|'
 " }}}
 " Tagbar {{{
 let g:tagbar_type_rst = {
-    \ 'ctagstype': 'rst',
-    \ 'ctagsbin' : '~/.config/nvim/scripts/rst2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-    \ }
+      \ 'ctagstype': 'rst',
+      \ 'ctagsbin' : '~/.config/nvim/scripts/rst2ctags.py',
+      \ 'ctagsargs' : '-f - --sort=yes',
+      \ 'kinds' : [
+      \ 's:sections',
+      \ 'i:images'
+      \ ],
+      \ 'sro' : '|',
+      \ 'kind2scope' : {
+      \ 's' : 'section',
+      \ },
+      \ 'sort': 0,
+      \ }
 let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'ctagsbin' : '~/.config/nvim/scripts/markdown2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-    \ }
+      \ 'ctagstype': 'markdown',
+      \ 'ctagsbin' : '~/.config/nvim/scripts/markdown2ctags.py',
+      \ 'ctagsargs' : '-f - --sort=yes',
+      \ 'kinds' : [
+      \ 's:sections',
+      \ 'i:images'
+      \ ],
+      \ 'sro' : '|',
+      \ 'kind2scope' : {
+      \ 's' : 'section',
+      \ },
+      \ 'sort': 0,
+      \ }
 " }}}
 " UltiSnips {{{
 let g:snips_author="Arden Rasmussen"
@@ -634,6 +647,16 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:vimtex_fold_enabled=1
 let g:vimtex_quickfix_latexlog = {'default' : 0}
 let g:vimtex_view_method='zathura'
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-shell-escape',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
 " }}}
 " Window Swap {{{
 let g:windowswap_map_keys=0
