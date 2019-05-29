@@ -453,7 +453,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " }}}
 " PyEnv {{{
 " let g:python_host_prog = "~/.pyenv/versions/2.7.14/bin/python"
-" let g:python3_host_prog = "~/.pyenv/versions/3.6.4/bin/python"
+let g:python3_host_prog = "~/.pyenv/versions/neovim/bin/python"
 " let g:python_version = matchstr(system("python --version | cut -f2 -d' '"), '^[0-9]')
 " if g:python_version =~ 3
 "   let g:python2_host_prog = "/usr/local/bin/python2"
