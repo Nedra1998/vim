@@ -7,191 +7,11 @@ runtime! debian.vim
 call plug#begin('~/.config/nvim/Plugged')
 
 " Language Support {{{
-
-" A {{{
-Plug 'pearofducks/ansible-vim'          " Ansible
-Plug 'kylef/apiblueprint.vim'           " ApiBlueprint
-Plug 'vim-scripts/applescript.vim'      " AppleScript
-Plug 'sudar/vim-arduino-syntax'         " Arduino
-Plug 'asciidoc/vim-asciidoc'            " AsciiDoc
-Plug 'hnamikaw/vim-autohotkey'          " AutoHotKey
-Plug 'hura/vim-asymptote'               " Asymptote
-" }}}
-" B {{{
-Plug 'jwalton512/vim-blade'             " Blade
-Plug 'vim-scripts/bnf.vim'              " BNF
-" }}}
-" C {{{
-Plug 'octol/vim-cpp-enhanced-highlight' " C++
-Plug 'vim-jp/vim-cpp'                   " C/C++
-Plug 'isobit/vim-caddyfile'             " CaddyFile
-Plug 'hellerve/carp-vim'                " Carp
-Plug 'mtscout6/vim-cjsx'                " CJSX
-Plug 'guns/vim-clojure-static'          " Clojure
-Plug 'pboettch/vim-cmake-syntax'        " CMake
-Plug 'kchmck/vim-coffee-script'         " CoffeeScript
-Plug 'elubow/cql-vim'                   " CQL
-Plug 'victoredwardocallaghan/cryptol.vim' " Cryptol
-Plug 'rhysd/vim-crystal'                " Crystal
-Plug 'tpope/vim-cucumber'               " Cucumber
-Plug 'chrisbra/csv.vim'                 " CSV
-" }}}
-" D {{{
-Plug 'dart-lang/dart-vim-plugin'        " Dart
-" }}}
-" E {{{
-Plug 'vim-scripts/ebnf.vim'             " EBNF
-Plug 'elixir-editors/vim-elixir'        " Elixier
-Plug 'ElmCast/elm-vim'                  " Elm
-Plug 'yalesov/vim-ember-script'         " EmberScript
-Plug 'yalesov/vim-emblem'               " Emblem
-Plug 'vim-erlang/vim-erlang-runtime'    " Erlang
-" }}}
-" F {{{
-Plug 'dag/vim-fish'                     " Fish
-Plug 'fsharp/vim-fsharp', {'for': 'fsharp', 'do': 'make fsautocomplete'} " F#
-" }}}
-" G {{{
-Plug 'tpope/vim-git'                    " Git
-Plug 'tikhomirov/vim-glsl'              " GLSL
-Plug 'maelvalais/gmpl.vim'              " GMPL
-Plug 'vim-scripts/gnuplot-syntax-highlighting' " GNUPlot
-" Plug 'fatih/vim-go'                     " Go
-Plug 'wannesm/wmgraphviz.vim'           " GraphViz
-Plug 'vim-scripts/groovy.vim'           " Groovy
-" }}}
-" H {{{
-Plug 'sheerun/vim-haml'                 " Haml
-Plug 'mustache/vim-mustache-handlebars' " Handlebars
-Plug 'neovimhaskell/haskell-vim'        " Haskell
-Plug 'yaymukund/vim-haxe'               " Haxe
-Plug 'othree/html5.vim'                 " HTML
-" }}}
-" I {{{
-Plug 'PotatoesMaster/i3-vim-syntax'     " i3
-" }}}
-" J {{{
-Plug 'glanotte/vim-jasmine'             " Jasmine
-Plug 'pangloss/vim-javascript'          " JavaScript
-Plug 'martinda/Jenkinsfile-vim-syntax'  " Jenkins
-Plug 'Glench/Vim-Jinja2-Syntax'         " Jinja2
-Plug 'GutenYe/json5.vim'                " Json5
-Plug 'elzr/vim-json'                    " Json
-Plug 'briancollins/vim-jst'             " Jst
-Plug 'mxw/vim-jsx'                      " Jsx
-Plug 'JuliaEditorSupport/julia-vim'     " Julia
-" }}}
-" K {{{
-Plug 'udalov/kotlin-vim'                " Kotlin
-" }}}
-" L {{{
-Plug 'lervag/vimtex'                    " Latex
-Plug 'vim-scripts/lbnf.vim'             " LBNF
-Plug 'groenewege/vim-less'              " LESS
-" Plug 'tpope/vim-liquid'                 " Liquid
-Plug 'kovisoft/slimv'                   " Lisp
-Plug 'gkz/vim-ls'                       " LiveScript
-Plug 'tbastos/vim-lua'                  " Lua
-" }}}
-" M {{{
-Plug 'sophacles/vim-bundle-mako'        " Mako
-Plug 'plasticboy/vim-markdown'          " Markdown
-" Plug 'vim-pandoc/vim-pandoc'
-" Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'rsmenon/vim-mathematica'          " Mathematica
-" }}}
-" N {{{
-Plug 'chr4/nginx.vim'                   " Nginx
-Plug 'zah/nim.vim'                      " Nim
-Plug 'LnL7/vim-nix'                     " Nix
-" }}}
-" O {{{
-Plug 'b4winckler/vim-objc'              " Objective C
-Plug 'jrk/vim-ocaml'                    " Ocaml
-Plug 'vim-scripts/octave.vim--'         " Octave
-Plug 'petRUShka/vim-opencl'             " OpenCL
-" }}}
-" P {{{
-Plug 'vim-perl/vim-perl'                " Perl
-Plug 'exu/pgsql.vim'                    " PGSQL
-Plug 'StanAngeloff/php.vim'             " PHP
-Plug 'aklt/plantuml-syntax'             " Plantuml
-Plug 'PProvost/vim-ps1'                 " PowerShell
-Plug 'uarun/vim-protobuf'               " Protobuf
-Plug 'digitaltoad/vim-pug'              " Pug
-Plug 'voxpupuli/vim-puppet'             " Puppet
-Plug 'purescript-contrib/purescript-vim' " PureScript
-" Plug 'python-mode/python-mode'          " Python
-" Plug 'hdima/python-syntax'
-Plug 'vim-python/python-syntax'
-" }}}
-" Q {{{
-Plug 'peterhoeg/vim-qml'                " QML
-" }}}
-" R {{{
-Plug 'jalvesaq/nvim-r'                  " R
-Plug 'wlangstroth/vim-racket'           " Racket
-Plug 'jneen/ragel.vim'                  " Ragel
-Plug 'IN3D/vim-raml'                    " Raml
-Plug 'sheerun/rspec.vim'                " RSpec
-" Plug 'gu-fan/riv.vim'                   " rST
-Plug 'vim-ruby/vim-ruby'                " Ruby
-Plug 'rust-lang/rust.vim'               " Rust
-" }}}
-" S {{{
-Plug 'petRUShka/vim-sage'               " Sage
-Plug 'derekwyatt/vim-sbt'               " SBT
-Plug 'derekwyatt/vim-scala'             " Scala
-Plug 'cakebaker/scss-syntax.vim'        " SCSS
-Plug 'slim-template/vim-slim'           " Slim
-Plug 'slime-lang/vim-slime-syntax'      " Slime
-Plug 'tomlion/vim-solidity'             " Solidity
-Plug 'wavded/vim-stylus'                " Stylus
-Plug 'keith/swift.vim'                  " Swift
-Plug 'baskerville/vim-sxhkdrc'          " Sxhkd
-Plug 'kurayama/systemd-vim-syntax'      " Systemd
-" }}}
-" T {{{
-Plug 'hashivim/vim-terraform'           " Terraform
-Plug 'timcharper/textile.vim'           " Textile
-Plug 'solarnz/thrift.vim'               " Thrift
-Plug 'keith/tmux.vim'                   " Tmux
-Plug 'wellbredgrapefruit/tomdoc.vim'    " TomDoc
-Plug 'cespare/vim-toml'                 " TOML
-Plug 'lumiliet/vim-twig'                " Twig
-Plug 'leafgarland/typescript-vim'       " TypeScript
-Plug 'HerringtonDarkholme/yats.vim'
-" }}}
-" V {{{
-Plug 'arrufat/vala.vim'                 " Vala
-Plug 'vim-scripts/vbnet.vim'            " VB.NET
-Plug 'smerrill/vcl-vim-plugin'          " VCL
-Plug 'vifm/vifm.vim'                    " vifm
-Plug 'lepture/vim-velocity'             " Velocity
-Plug 'posva/vim-vue'                    " Vue
-" }}}
-" X {{{
-Plug 'vim-scripts/XSLT-syntax'          " XSLT
-" }}}
-" Y {{{
-Plug 'stephpy/vim-yaml'                 " YAML
-Plug 'sheerun/vim-yardoc'               " YARD
-" }}}
-
+Plug 'sheerun/vim-polyglot'
 " }}}
 
 " Utilities {{{
 
-" Django {{{
-Plug 'Nedra1998/django-plus.vim'
-" }}}
-" Emmet {{{
-Plug 'mattn/emmet-vim'
-" }}}
-" Git {{{
-Plug 'tpope/vim-fugitive'
-Plug 'christoomey/vim-conflicted'
-" }}}
 " KeyControl {{{
 Plug 'ervandew/supertab'
 " }}}
@@ -239,10 +59,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " }}}
 " ALE {{{
-Plug 'w0rp/ale'
-" }}}
-" Eunuch {{{
-Plug 'tpope/vim-eunuch' 
+" Plug 'w0rp/ale'
 " }}}
 " Search {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -251,6 +68,7 @@ Plug 'junegunn/fzf.vim'
 " NERDTree {{{
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'ryanoasis/vim-devicons'
 " }}}
 " Gutter {{{
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -260,7 +78,7 @@ Plug 'mhinz/vim-signify'
 Plug 'majutsushi/tagbar'
 " }}}
 " Completion {{{
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all'}
 Plug 'davidhalter/jedi-vim'
 " }}}
 " Formatter {{{
@@ -271,7 +89,7 @@ Plug 'junegunn/vim-easy-align'
 " Plug 'suan/vim-instant-markdown'
 " }}}
 " Multi Cursors {{{
-Plug 'terryma/vim-multiple-cursors' 
+Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " }}}
@@ -432,8 +250,10 @@ if (empty($TMUX))
   endif
 endif
 set background=dark
-au BufNewFile,BufRead *.{md,rst,tex}
-      \ set background=light
+if strftime("%H") > 4 && strftime("%H") <= 18
+  au BufNewFile,BufRead *.{md,Rmd,rst,tex}
+        \ set background=light
+endif
 colorscheme isotope
 " }}}
 " Completion {{{
@@ -466,7 +286,7 @@ let g:tex_flavor="latex"
 " }}}
 " Line Length {{{
 set colorcolumn=80
-au BufNewFile,BufRead *.{md,rst,tex}
+au BufNewFile,BufRead *.{md,Rmd,rst,tex}
       \ set textwidth=79
 " }}}
 " Mouse {{{
@@ -511,8 +331,10 @@ set timeout ttimeoutlen=50
 
 " Airline {{{
 let g:airline_isotope_bg='dark'
-au BufNewFile,BufRead *.{md,rst,text,tex}
-      \ let g:airline_isotope_bg='light'
+if strftime("%H") < 4 || strftime("%H") <= 18
+  au BufNewFile,BufRead *.{md,Rmd,rst,text,tex}
+        \ let g:airline_isotope_bg='light'
+endif
 let g:airline_theme='isotope'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
@@ -529,9 +351,11 @@ let g:ale_sign_style_warning = 's>'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {'python': ['isort', 'yapf', 'trim_whitespace', 'autopep8'], 'rust': ['rustfmt'], 'cmake': ['cmakeformat'], 'javascript': ['prettier']}
+let g:ale_linters = { 'cpp': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder'] }
 
 " Cpp {{{
-let g:ale_linters = { 'cpp': ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder'] }
 let g:ale_cpp_clang_executable = 'clang++-5.0'
 let g:ale_cpp_clang_options = '-std=c++17 -Wall'
 let g:ale_cpp_gcc_executable = 'g++-7'
@@ -542,6 +366,8 @@ let g:ale_c_gcc_executable = 'gcc-7'
 let g:ale_c_gcc_options = '-Wall -lm'
 let g:ale_cpp_cppcheck_options = "--enable=all"
 " }}}
+" Python {{{
+" }}}
 
 " }}}
 " Auto Format {{{
@@ -551,8 +377,8 @@ let g:formatter_yapf_style='google'
 let g:formatdef_lua_fmt = '"luafmt -l 80 -i 2 --stdin"'
 let g:formatters_lua = ['lua_fmt']
 " }}}
-" Commenter {{{
-
+" CtrlP{{{
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 " }}}
 " Emmet {{{
 let g:user_emmet_install_global = 0
@@ -647,6 +473,8 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:vimtex_fold_enabled=1
 let g:vimtex_quickfix_latexlog = {'default' : 0}
 let g:vimtex_view_method='zathura'
+let g:LatexBox_viewer='zathura'
+let g:LatexBox_latexmk_preview_continuously=1
 let g:vimtex_compiler_latexmk = {
     \ 'options' : [
     \   '-pdf',
@@ -662,7 +490,8 @@ let g:vimtex_compiler_latexmk = {
 let g:windowswap_map_keys=0
 " }}}
 " You Complete Me {{{
-let g:ycm_key_list_select_completion=['<C-n>', '<Down']
+let g:ycm_python_binary_path = 'python'
+let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_complete_in_comments = 0
 let g:ycm_confirm_extra_conf = 0
@@ -683,6 +512,8 @@ au bufreadpre,bufnewfile *.bnf set ft=bnf
 let g:cpp_class_scope_highlight=1
 let g:cpp_member_variable_highlight=1
 let g:cpp_class_decl_highlight=1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_concepts_highlight = 1
 " }}}
 " Fortran {{{
 let fortran_free_source=1
@@ -695,10 +526,13 @@ au bufreadpre,bufnewfile *.lbnf set ft=lbnf
 " }}}
 " Markdown {{{
 let g:vim_markdown_math=1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
 " au BufWrite *.md call MarkdownCompile(1)
 " }}}
 " Python {{{
 let g:python_highlight_all = 1
+let g:pymode_python = 'python3'
 " }}}
 
 " }}}
