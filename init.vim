@@ -33,7 +33,6 @@ Plug 'honza/vim-snippets'
 Plug 'jontrainor/TaskList.vim'
 " }}}
 " Commenter {{{
-" Plug 'tpope/vim-commentary'
 Plug 'tomtom/tcomment_vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 " }}}
@@ -79,17 +78,10 @@ Plug 'majutsushi/tagbar'
 " }}}
 " Completion {{{
 Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --all'}
-Plug 'davidhalter/jedi-vim'
 " }}}
 " Formatter {{{
 Plug 'Chiel92/vim-autoformat'
 Plug 'junegunn/vim-easy-align'
-" }}}
-" Preview {{{
-" Plug 'suan/vim-instant-markdown'
-" }}}
-" Multi Cursors {{{
-Plug 'terryma/vim-multiple-cursors'
 " }}}
 
 " }}}
@@ -109,15 +101,11 @@ Plug 'kien/rainbow_parentheses.vim'
 " WakaTime {{{
 Plug 'wakatime/vim-wakatime'
 " }}}
-" Guides {{{
-Plug 'nathanaelkane/vim-indent-guides'
-" }}}
 
 " }}}
 
 " Color Scheme {{{
 Plug 'isotope-theme/vim'
-Plug 'NLKNguyen/papercolor-theme'
 " }}}
 
 call plug#end()
